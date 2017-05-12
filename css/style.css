@@ -1,0 +1,131 @@
+body{ 
+  font-family: "HelveticaNeueW01-65Medi", Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+  margin:0px 0px; 
+  overflow-y: scroll; 
+  overflow-x:hidden;
+  width:100%;
+  color:#6d6e70;
+}
+
+.container-fluid{
+  padding-left:0px;
+  padding-right:0px;
+}
+
+.img-fluid{
+  width:100%;
+  padding-left:0px;
+  padding-right:0px;
+}
+/* Extra Small */
+@media (max-width:576px) {
+  html {
+    font-size: 8px;
+  }
+  .card {
+    min-height: 75px;
+    width: 100%;
+  }
+  .imgtext {
+    position:absolute; 
+    top:80%; 
+    left:10%; 
+    color:white;
+  }
+}
+/* Small */
+@media (min-width:576px) {
+  html {
+    font-size: 12px;
+  }
+  .card {
+    min-height: 150px;
+    width: 20rem;
+  }
+  .imgtext {
+    position:absolute; 
+    top:80%; 
+    left:40%; 
+    color:white;
+  }
+}
+
+/* Medium */
+@media (min-width:768px) {
+  html {
+    font-size: 16px;
+  }
+  .card {
+    min-height: 150px;
+    width: 20rem;
+  }
+  .imgtext {
+    position:absolute; 
+    top:80%; 
+    left:40%; 
+    color:white;
+  }
+}
+/* Large */
+@media (min-width:992px) {
+  html {
+    font-size: 18px;
+  }
+  .card {
+    min-height: 150px;
+    width: 20rem;
+  }
+  .imgtext {
+    position:absolute; 
+    top:87%; 
+    left:40%; 
+    color:white;
+  }
+}
+
+/* Ex large */
+@media (min-width:1200px) {
+  html {
+    font-size: 20px;
+  }
+  .card {
+    min-height: 150px;
+    width: 20rem;
+    margin:0 auto;
+    float:none;
+  }
+
+  .imgtext {
+    position:absolute; 
+    top:80%; 
+    left:47%; 
+    color:white;
+  }
+}
+.container-fluid{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.affix{
+  top:20px;
+}
+
+.fixed{
+  top:0;
+  position:fixed;
+}
+.menu{
+  color:#fff;
+  position:absolute;
+  top:200px;
+}
+
+#map{
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:100%;
+}
+

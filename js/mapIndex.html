@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='UTF-8'/>
+  <!--[if lt IE 9]>
+   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <title>Roads Kill Map | Pulitzer Center</title>
+  <link rel="shortcut icon" href="http://roadskillmap.com/css/images/favicon.png" type="image/png" />
+  <meta property="og:image" content="http://roadskillmap.com/css/images/thumb.png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="Description" content="The global road death toll has already reached 1.24 million per year and is on course to triple to 3.6 million per year by 2030." />
+  <script src='//api.tiles.mapbox.com/mapbox.js/v1.2.0/mapbox.js'></script>
+  <link href='//api.tiles.mapbox.com/mapbox.js/v1.2.0/mapbox.css' rel='stylesheet' />
+   <!--[if lte IE 8]>
+    <link href='//api.tiles.mapbox.com/mapbox.js/v1.2.0/mapbox.ie.css' rel='stylesheet' >
+  <![endif]-->
+    <link rel="stylesheet" href="css/flexslider.css" />
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="css/MarkerCluster.Default.ie.css" />
+  <![endif]-->
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <link href='css/style.css' rel='stylesheet' />
+  <link href='css/shadowbox.css' rel='stylesheet' />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="js/shadowbox.js"></script>
+  <script src="js/jquery.flexslider.min.js"></script>
+  <script src="js/app-2015.js"></script>
+  <script src="js/leaflet.markercluster.js"></script>
+  <script src="js/leaflet-pip.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-17518137-6', 'roadskillmap.com');
+  ga('send', 'pageview');
+  </script>
+  
+  <script type='text/javascript'>var _sf_startpt=(new Date()).getTime()</script>
+  <style>
+  /* (so that the pictures in pop-ups are not distorted) */
+.flexslider .slides img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+</style>
+
+</head>
+
+<body id="fact-0">
+<div id="header">
+  <div id="progress"></div>
+  <div id="title"><a href="/">Roads Kill</a> <!-- <span class="stat">1.24 million people</span> --></div>
+  <div id="branding"><a target="#" href="http://pulitzercenter.org/node/12711">Pulitzer Center</a></div>
+</div>
+
+<div id="info">
+ <div class="inner">
+   <a id="info-close" class="leaflet-popup-close-button" href="#">Close</a>
+   <div class="layer-caption"></div>
+   <a class="prev-btn" href="#">&laquo; Previous</a>
+   <a class="next-btn" href="#">Next &raquo;</a>
+  </div>
+</div>
+
+<div id="twitter">
+<a class="twitter-timeline" href="https://twitter.com/search?q=%23roadskill" data-widget-id="362253821021401088">Tweets about "#roadskill"</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+
+<div id="map" class="dark"></div>
+
+<div class='legend'>
+  <div class='legend-title'>Road deaths per 100,000 people (2013)</div>
+  <div class='legend-scale'>
+    <ul class='legend-labels'>
+      <li><span style='background:#CFB95E;'></span>> 0</li>
+      <li><span style='background:#AB9433;'></span>> 10</li>
+      <li><span style='background:#7F6E26;'></span>> 20</li>
+      <li><span style='background:#584C1A;'></span>> 30</li>
+      <li><span style='background:#ddd;'></span>No data</li>
+    </ul>
+  </div>
+<div class='legend-story'>Story <img alt="marker" src="css/images/story-icon.png" /></div>
+<div class='legend-source'>Source: <a href="http://www.who.int/violence_injury_prevention/road_safety_status/2015/en/index.html
+">World Health Organization, 2015</a></div>
+</div>
+
+<a id="fullscreen" target="#" href="/">View fullscreen</a>
+<a id="info-open" href="#">i</a>
+<img class="loading" alt="loading" src="css/images/ajax-loader.gif" />
+
+
+<script type='text/javascript'>
+    var _sf_async_config={};
+    /** CONFIGURATION START **/
+    _sf_async_config.uid = 55298;
+    _sf_async_config.domain = 'pulitzercenter.org';
+    _sf_async_config.useCanonical = true;
+    _sf_async_config.sections = 'Roads Kill';
+    /** CONFIGURATION END **/
+    (function(){
+      function loadChartbeat() {
+        window._sf_endpt=(new Date()).getTime();
+        var e = document.createElement('script');
+        e.setAttribute('language', 'javascript');
+        e.setAttribute('type', 'text/javascript');
+        e.setAttribute('src', '//static.chartbeat.com/js/chartbeat.js');
+        document.body.appendChild(e);
+      }
+      var oldonload = window.onload;
+      window.onload = (typeof window.onload != 'function') ?
+         loadChartbeat : function() { oldonload(); loadChartbeat(); };
+    })();
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="SightLife">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--D3-->
+  <link href='https://api.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.css' rel='stylesheet' />
+  <!--Bootstrap CSS-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+    crossorigin="anonymous">
+  <!--CSS-->
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <!--<link rel="stylesheet" type="text/css" href="css/projections.css" />-->
+  <!--D3-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.4/d3.min.js"></script>
+  <!--jQuery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <!--Tether-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+    crossorigin="anonymous"></script>
+  <!--BootstrapJS-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+    crossorigin="anonymous"></script>
+  <!--Mapbox-->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.js'></script>
+
+  <!--App-->
+  <script type="text/javascript" src="js/projections_line.js"></script>
+  <title>SightLife Global Data Portal</title>
+  <script>
+    $(document).ready(function () {
+      var email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+      //var phone_regex = /^\(?([0-9]{3})\)?[- ]?([0-9]{3})[- ]?([0-9]{4})$/;
+      var phone_regex = /\d{5}([- ]*)\d{5}$/;
+      function validateInput(id, regex_line) {
+        if (!regex_line.test($("#" + id).val())) {
+          console.log("bad input");
+          var div = $("#" + id).closest("div");
+          div.removeClass("has-success");
+          $("#glypcn" + id).remove();
+          div.addClass("has-danger");
+          div.append('<span id="glypcn' + id + '" class="glyphicon glyphicon-remove form-control-feedback"></span>');
+          return false;
+        }
+        else {
+          console.log('good input!');
+          var div = $("#" + id).closest("div");
+          div.removeClass("has-danger");
+          $("#glypcn" + id).remove();
+          div.addClass("has-success");
+          div.append('<span id="glypcn' + id + '" class="glyphicon glyphicon-ok form-control-feedback"></span>');
+          return true;
+        }
+      }
+
+      $('#email-input').on('input', function () {
+        console.log('input in!');
+        validateInput("email-input", email_regex);
+      });
+      $('#phone-input').on('input', function () {
+        validateInput("phone-input", phone_regex);
+      });
+    });
+    $(window).bind('scroll', function (event) {
+      var num = 200;
+      //if($(window).scrollTop() > num){
+      //$('.menu').addClass('fixed');
+      //} else {
+      // $('menu').removeClass('fixed');
+      // }
+    });
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    
+    h2,
+    h3 {
+      margin: 10px;
+      font-size: 1.2em;
+    }
+    
+    h3 {
+      font-size: 1em;
+    }
+    
+    p {
+      font-size: 0.85em;
+      margin: 10px;
+      text-align: left;
+    }
+    
+    .map-overlay {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.8);
+      margin-right: 20px;
+      font-family: Arial, sans-serif;
+      overflow: auto;
+      border-radius: 3px;
+    }
+    
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+    
+    #features {
+      top: 0;
+      height: 100px;
+      margin-top: 20px;
+      width: 250px;
+    }
+    
+    #legend {
+      padding: 10px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+      line-height: 18px;
+      height: 150px;
+      margin-bottom: 40px;
+      width: 100px;
+    }
+    
+    .legend-key {
+      display: inline-block;
+      border-radius: 20%;
+      width: 10px;
+      height: 10px;
+      margin-right: 5px;
+    }
+  </style>
+  <script>
+    $(document).ready(function () {
+      mapboxgl.accessToken = 'pk.eyJ1Ijoic3RhbnRzNSIsImEiOiJjajEwNnNua3MwMzVqMzJydG5na2JreGY4In0._O6zcObpmLYzaQUe3TVu2Q';
+
+      //create map 
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/stants5/cj2ln1or9002q2sozyk9rdbsd', 
+        center:[78.9629,20.5937],
+        zoom:3
+      });
+
+      map.on('load', function () {
+        map.getCanvas().style.cursor = 'default';
+         map.fitBounds([[67.763672,33.512107], [90, 4.453212]]);
+        var layers = ['yes', 'no', 'in progress'];
+
+        layers.forEach(function (layer) {
+          var color = map.getPaintProperty(layer, 'fill-color');
+          var item = document.createElement('div');
+          var key = document.createElement('span');
+          key.className = 'legend-key';
+          key.style.backgroundColor = color;
+
+          var value = document.createElement('span');
+          value.innerHTML = layer;
+          item.appendChild(key);
+          item.appendChild(value);
+          legend.appendChild(item);
+        });
+        map.on('mousemove', function (e) {
+          var states = map.queryRenderedFeatures(e.point, {
+            layers: layers
+          });
+          if (states.length > 0) {
+            document.getElementById('pd').innerHTML = '<h3><strong>' + states[0].properties.NAME_1 + "</strong></h3>";
+          } else {
+            document.getElementById('pd').innerHTML = "<p>Hover over a state!</p>";
+          }
+        });
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-3 col-lg-3 offset-sm-1 offset-md-1 offset-lg-1">
+        <a name="home"></a>
+        <!-- TO-DO: Get rid of right whitespace in large displays-->
+        <a style="display:inline-block;" href="https://www.sightlife.org/">
+          <img src="./img/logo-SightLife_no-tagline.png" class="img-fluid" alt="SightLife">
+        </a>
+      </div>
+      <div class="col-sm-7 col-md-7 col-lg-7 offset-sm-1 offset-md-1 offset-lg-1">
+        <h5 style="padding-top:2%;">Ending corneal blindness in India, one transplant at a time.</h5>
+      </div>
+    </div>
+    <!--<div >
+      <ul class="nav nav-stacked">
+        <li class="nav-item active"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#policy">Policy</a></li>
+        <li><a class="nav-link" href="#projections">Projections</a></li>
+        <li><a class="nav-link" href="#benefits">Benefits</a></li>
+        <li><a class="nav-link" href="#contact">Contact Us</a></li>
+      </ul>
+    </div>-->
+    <img src="img/karthik_final.png" class="img-fluid" alt="Responsive image" style="width:100%;">
+    <div style="text-align:center;">
+      <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
+          <br>
+          <p>More than half the world's corneal blind live in India.</p><br>
+          <p>Nearly 6 million Indian citizens suffer from corneal blindness in either one or both eyes. But we can change that.
+            By increasing the number of transplants available in India through policy change and program implementation,
+            we can help millions of people unlock life’s possibilities.</p><br>
+          <p>A few simple policy changes would dramatically increase the number of transplant offerings available in India.</p><br>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 col-md-4 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-2 offset-xl-2">
+        <div class="card text-center card-inverse" style="background-color:#645d9b;">
+          <h4 class="card-header" style="background-color:white; color:#6d6e70;">Mandatory Notification</h4>
+          <div class="card-block">
+            <p>A policy that would require all hospitals to notify the tissue procurement organization of all deaths in a timely
+              manner.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">
+        <div class="card text-center card-inverse" style="background-color:#645d9b;">
+          <h4 class="card-header" style="background-color:white; color:#6d6e70;">First-Person Consent</h4>
+          <div class="card-block">
+            <p>A policy of first-person consent allows any person who wishes to donate their tissues to be used for transplantation,
+              to give legal consent prior to death.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
+          <br>
+          <p>Currently only 42% of corneas that are donated are used for transplantation. By implementing these policies on
+            a state and national level, not only will we see an increase in donations, but we will also be able to recover
+            and use more donated corneas.</p><br>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;">
+      <img src="img/sajida_final.png" class="img-fluid" alt="Responsive image" style="width:100%;">
+      <div class="imgtext">
+        <h3>What is the state of India right now?</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
+        <br>
+        <p>Select a state to learn more about the current level of transplant offerings within that state and see how transplant
+          offering can increase when policies of mandatory notification and first person consent are implemented.</p><br>
+      </div>
+    </div>
+    <div class="row" style="position:relative;">
+      <div class="col-sm-8 offset-sm-2" id="map" style="position:static; top:0; bottom:0; width:100%; height:500px;"></div>
+      <div class="map-overlay" id="features" style="right:15%;">
+        <div id="pd" >
+          <p>Click on your state!</p>
+        </div>
+      </div>
+      <div class="map-overlay" id="legend" style="position:absolute; right:15%; width:11%; height:17%;"></div>
+    </div>
+    </div>
+    <div class="row">
+      <br><br><br><br><br>
+    </div>
+    <div style="position:relative;">
+      <img src="img/dharender_final.png" class="img-fluid" alt="Responsive image" style="width:100%;">
+      <div class="imgtext">
+        <h3>How does HCRP benefit your population?</h3>
+      </div>
+    </div>
+    <div class="row" style="margin-top:50px;">
+      <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">
+        <div class="card text-center card-inverse" style="background-color:#645d9b;">
+          <h4 class="card-header" style="background-color:white; color:#6d6e70;">Better Quality Of Life</h4>
+          <div class="card-block">
+            <p>A policy that would require all hospitals to notify the tissue procurement organization of all deaths in a timely
+              manner.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">
+        <div class="card text-center card-inverse" style="background-color:#645d9b;">
+          <h4 class="card-header" style="background-color:white; color:#6d6e70;">Better Educational Outcomes</h4>
+          <div class="card-block">
+            <p>A policy that would require all hospitals to notify the tissue procurement organization of all deaths in a timely
+              manner.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">
+        <div class="card text-center card-inverse" style="background-color:#645d9b;">
+          <h4 class="card-header" style="background-color:white; color:#6d6e70;">Reintroduction to the Economy</h4>
+          <div class="card-block">
+            <p>A policy that would require all hospitals to notify the tissue procurement organization of all deaths in a timely
+              manner.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 5%;  background:#645d9b; height:70px;">
+      <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
+        <h3 class="h3" style="color:white;text-align:center; padding-top:1.5%;"> Want to get started? Contact SightLife today!</h3>
+      </div>
+    </div>
+    <div class="row" style="margin-top:3%; margin-bottom:2%;">
+      <div class="col-sm-6 col-md-6 col-lg-6 offset-sm-3 offset-md-3 offset-lg-3">
+        <form action="mailto:sarah.g.stanton@gmail.com" method="POST" , enctype="text/plain">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Your Name">
+          </div>
+          <div class="form-group">
+            <label for="job-title">Job Title</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Your Job Title">
+          </div>
+          <div class="form-group">
+            <label for="state">State Represented</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Your State">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" class="form-control" id="phone-input" placeholder="9999999999">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email-input" placeholder="me@some_email.com">
+          </div>
+          <button type="submit" class="btn btn-primary float-right">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
