@@ -138,19 +138,71 @@
   </style>
   <script>
     $(document).ready(function () {
+      $('body').scrollspy({ target: '#navbar-example' })
+      var toggleAffix = function (affixElement, scrollElement, wrapper) {
+        var height = affixElement.outerHeight(),
+          top = wrapper.offset().top;
+
+        if (scrollElement.scrollTop() >= top) {
+          wrapper.height(height);
+          affixElement.addClass("affix");
+        } else {
+          affixElement.removeClass('affix');
+          wrapper.height('auto');
+        }
+      };
+
+      function clickSingleA(a) {
+        var items = document.querySelectorAll('.nav-link, .single');
+        var arr = Object.keys(items).map(function(k) { return items[k] });
+        var index = arr.indexOf(a);
+        var part1 = arr.slice(0, index);
+        var part2 = arr.slice(index + 1);
+        var others = part1.concat(part2);
+        if (arr.length) {
+          others.forEach(function(element){
+            $(element).closest('li').addClass('inactive');
+          });
+        }
+        a.className = 'single active nav-link:active';
+      }
+     // $('.nav-item').click(function () {
+       // clickSingleA(this);
+      //});
+
+      $('[data-toggle="affix"]').each(function () {
+        var ele = $(this),
+          wrapper = $('<div></div>');
+
+        ele.before(wrapper);
+        $(window).on('scroll resize', function () {
+          toggleAffix(ele, $(this), wrapper);
+        });
+        //initialization
+        toggleAffix(ele, $(window), wrapper);
+
+
+
+      });
+
+      //$(document.body).scrollspy({
+      //target:'#leftCol', 
+      //o/ffset:height
+      //});
+
       mapboxgl.accessToken = 'pk.eyJ1Ijoic3RhbnRzNSIsImEiOiJjajEwNnNua3MwMzVqMzJydG5na2JreGY4In0._O6zcObpmLYzaQUe3TVu2Q';
 
       //create map 
       var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/stants5/cj2ln1or9002q2sozyk9rdbsd', 
-        center:[78.9629,20.5937],
-        zoom:3
+        style: 'mapbox://styles/stants5/cj2ln1or9002q2sozyk9rdbsd',
+        center: [78.9629, 20.5937],
+        zoom: 3
       });
 
       map.on('load', function () {
         map.getCanvas().style.cursor = 'default';
-         map.fitBounds([[67.763672,33.512107], [90, 4.453212]]);
+        map.fitBounds([[67.763672, 33.512107], [90, 4.453212]]);
         var layers = ['yes', 'no', 'in progress'];
 
         layers.forEach(function (layer) {
@@ -166,24 +218,37 @@
           item.appendChild(value);
           legend.appendChild(item);
         });
-        map.on('mousemove', function (e) {
+        map.on('click', function (e) {
           var states = map.queryRenderedFeatures(e.point, {
             layers: layers
           });
+          var element = document.getElementById('features'),
+            style = window.getComputedStyle(element),
+            visibility = style.getPropertyValue('visibility');
+
+          if (visibility == 'hidden') {
+            document.getElementById('features').style.visibility = 'visible';
+          }
+
+
           if (states.length > 0) {
             document.getElementById('pd').innerHTML = '<h3><strong>' + states[0].properties.NAME_1 + "</strong></h3>";
           } else {
-            document.getElementById('pd').innerHTML = "<p>Hover over a state!</p>";
+            document.getElementById('pd').innerHTML = "<p>Hover over a state within Indian boundaries</p>";
           }
         });
+
+        document.getElementById('close').addEventListener('click', function () {
+          document.getElementById('features').style.visibility = 'hidden';
+        })
       });
     });
   </script>
 </head>
 
-<body>
-  <div class="container-fluid">
-    <div class="row">
+<body data-spy="scroll" data-target="#navbar-example">
+  <div class="container-fluid" style="top:25%;" id="home">
+    <div class="row"> 
       <div class="col-sm-3 col-md-3 col-lg-3 offset-sm-1 offset-md-1 offset-lg-1">
         <a name="home"></a>
         <!-- TO-DO: Get rid of right whitespace in large displays-->
@@ -195,26 +260,44 @@
         <h5 style="padding-top:2%;">Ending corneal blindness in India, one transplant at a time.</h5>
       </div>
     </div>
-    <!--<div >
-      <ul class="nav nav-stacked">
-        <li class="nav-item active"><a class="nav-link" href="#home">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#policy">Policy</a></li>
-        <li><a class="nav-link" href="#projections">Projections</a></li>
-        <li><a class="nav-link" href="#benefits">Benefits</a></li>
-        <li><a class="nav-link" href="#contact">Contact Us</a></li>
+    <div style="position:relative;">
+      <img src="img/karthik_final.png" class="img-fluid" alt="Responsive image" style="width:100%;">
+    </div>
+  </div>
+  <div class="container-fluid">
+    <nav data-toggle="affix"  style="width:12%;" id="navbar-example"  style="z-index:2; position:absolute;">
+      <!--<button class="navbar-toggler hidden-sm-up pull-xs-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+        ☰
+    </button>
+      <a class="navbar-brand" href="#">Brand</a>
+      <div class="collapse navbar-toggleable-xs" id="collapsingNavbar">-->
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#policy">Policy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#projections">Projections</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#benefits">Benefits</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact-us">Contact Us</a>
+        </li>
       </ul>
-    </div>-->
-    <img src="img/karthik_final.png" class="img-fluid" alt="Responsive image" style="width:100%;">
-    <div style="text-align:center;">
-      <div class="row">
-        <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
-          <br>
-          <p>More than half the world's corneal blind live in India.</p><br>
-          <p>Nearly 6 million Indian citizens suffer from corneal blindness in either one or both eyes. But we can change that.
-            By increasing the number of transplants available in India through policy change and program implementation,
-            we can help millions of people unlock life’s possibilities.</p><br>
-          <p>A few simple policy changes would dramatically increase the number of transplant offerings available in India.</p><br>
-        </div>
+      <!-- </div>-->
+    </nav>
+    <div class="row" id="policy" style="z-index:1; position:relative;">
+      <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
+        <br>
+        <p>More than half the world's corneal blind live in India.</p><br>
+        <p>Nearly 6 million Indian citizens suffer from corneal blindness in either one or both eyes. But we can change that.
+          By increasing the number of transplants available in India through policy change and program implementation, we
+          can help millions of people unlock life’s possibilities.</p><br>
+        <p>A few simple policy changes would dramatically increase the number of transplant offerings available in India.</p><br>
       </div>
     </div>
     <div class="row">
@@ -249,7 +332,7 @@
         </div>
       </div>
     </div>
-    <div style="position:relative;">
+    <div style="position:relative;" id="projections">
       <img src="img/sajida_final.png" class="img-fluid" alt="Responsive image" style="width:100%;">
       <div class="imgtext">
         <h3>What is the state of India right now?</h3>
@@ -264,18 +347,20 @@
     </div>
     <div class="row" style="position:relative;">
       <div class="col-sm-8 offset-sm-2" id="map" style="position:static; top:0; bottom:0; width:100%; height:500px;"></div>
-      <div class="map-overlay" id="features" style="right:15%;">
-        <div id="pd" >
+      <div class="map-overlay" id="features" style="right:15%; visibility:visible;">
+        <button type="button" class="close" aria-label="Close" id="close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div id="pd">
           <p>Click on your state!</p>
         </div>
       </div>
       <div class="map-overlay" id="legend" style="position:absolute; right:15%; width:11%; height:17%;"></div>
     </div>
-    </div>
     <div class="row">
       <br><br><br><br><br>
     </div>
-    <div style="position:relative;">
+    <div style="position:relative;" id="benefits">
       <img src="img/dharender_final.png" class="img-fluid" alt="Responsive image" style="width:100%;">
       <div class="imgtext">
         <h3>How does HCRP benefit your population?</h3>
@@ -283,7 +368,7 @@
     </div>
     <div class="row" style="margin-top:50px;">
       <div class="card-deck" style="padding-left:2%;">
-     <!-- <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">-->
+        <!-- <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">-->
         <div class="card text-center card-inverse" style="background-color:#645d9b;">
           <h4 class="card-header" style="background-color:white; color:#6d6e70;">Better Quality Of Life</h4>
           <div class="card-block">
@@ -292,8 +377,8 @@
             </p>
           </div>
         </div>
-      <!--</div>-->
-      <!--<div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">-->
+        <!--</div>-->
+        <!--<div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">-->
         <div class="card text-center card-inverse" style="background-color:#645d9b;">
           <h4 class="card-header" style="background-color:white; color:#6d6e70;">Better Educational Outcomes</h4>
           <div class="card-block">
@@ -302,8 +387,8 @@
             </p>
           </div>
         </div>
-      <!--</div>-->
-      <!--<div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">-->
+        <!--</div>-->
+        <!--<div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">-->
         <div class="card text-center card-inverse" style="background-color:#645d9b;">
           <h4 class="card-header" style="background-color:white; color:#6d6e70;">Reintroduction to the Economy</h4>
           <div class="card-block">
@@ -312,11 +397,12 @@
             </p>
           </div>
         </div>
-     <!-- </div>-->
+        <!-- </div>-->
       </div>
     </div>
+  </div>
 
-    <div class="row" style="margin-top: 5%;  background:#645d9b; height:70px;">
+    <div class="row" style="margin-top: 5%;  background:#645d9b; " id="contact-us">
       <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
         <h3 class="h3" style="color:white;text-align:center; padding-top:1.5%;"> Want to get started? Contact SightLife today!</h3>
       </div>

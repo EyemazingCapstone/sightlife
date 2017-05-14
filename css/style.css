@@ -6,6 +6,7 @@ body{
   overflow-x:hidden;
   width:100%;
   color:#6d6e70;
+  position: relative;
 }
 
 .container-fluid{
@@ -129,3 +130,40 @@ body{
   width:100%;
 }
 
+.affix {
+  top:20%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  color:white;
+}
+
+.nav-item{
+  color:white;
+  }
+
+
+
+.active{
+  background-color:rgba(100, 93, 155, 1.0);
+  color:white;
+}
+
+.inactive{
+   background-color: rgba(109,110,113, 0.30);
+}
+
+nav, ul, li {
+  background-color: rgba(109,110,113, 0.30);
+}
+
+.single{
+  color:white;
+}
+
+.nav-link:hover{
+  color:white;
+  
+}
