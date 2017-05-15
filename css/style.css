@@ -144,12 +144,14 @@ body{
   color:white;
   }
 
+.nav-pills .nav-item.show .nav-link, .nav-pills .nav-link.active {
+  background-color:rgba(100, 93, 155, 1.0);
+}
 
-
-.active{
+/*.active{
   background-color:rgba(100, 93, 155, 1.0);
   color:white;
-}
+}*/
 
 .inactive{
    background-color: rgba(109,110,113, 0.30);
@@ -160,6 +162,10 @@ nav, ul, li {
 }
 
 .single{
+  color:white;
+}
+
+.nav-link{
   color:white;
 }
 
