@@ -118,6 +118,22 @@
   </style>
   <script>
     $(document).ready(function () {
+
+      
+
+      /*var windowWidth = $(window).width();
+      if(windowWidth < 768) {
+        $("#navbar-example").remove()
+
+        var element = document.getElementById('navbar-example'),
+          style = window.getComputedStyle(element),
+          visibility = style.getPropertyValue('visibility');
+
+        if (visibility == 'hidden') {
+          document.getElementById('features').style.visibility = 'visible';
+        }
+      }*/
+
       $('body').scrollspy({ target: '#navbar-example' })
       var toggleAffix = function (affixElement, scrollElement, wrapper) {
         var height = affixElement.outerHeight(),
@@ -283,13 +299,13 @@
     </div>
     <div style="position:relative;">
       <div style="z-index:2; position:absolute; left:4%; top:75%;">
-        <button type="button" class="btn btn-primary"><a  id="button-contact" style= "color:white; width:100%;  "href="#contact-us">Large button</a></button>
+        <button type="button" class="btn btn-primary"><a  id="button-contact" style= "color:white; width:100%;  "href="#contact-us">Contact Us</a></button>
       </div>
       <img src="img/karthik_final.png" class="img-fluid" alt="Responsive image" style="width:100%; z-index:1;">
     </div>
   </div>
   <div class="container-fluid">
-    <nav data-toggle="affix" style="width:12%;" id="navbar-example" style="z-index:2; position:absolute;">
+    <nav data-toggle="affix" style="width:12%;" id="navbar-1" style="z-index:2; position:absolute;">
       <!--<button class="navbar-toggler hidden-sm-up pull-xs-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
         ☰
     </button>
@@ -313,6 +329,30 @@
         </li>
       </ul>
       <!-- </div>-->
+    </nav>
+    <nav data-toggle="affix" style="width:12%;" id="navbar-2" style="z-index:2; position:absolute;">
+      <button class="navbar-toggler hidden-sm-up pull-xs-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+        ☰
+      </button>
+      <div class="collapse navbar-toggleable-xs" id="collapsingNavbar">
+        <ul class="nav flex-column nav-pills">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#policy">Policy</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projections">Projections</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#benefits">Benefits</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact-us">Contact Us</a>
+          </li>
+        </ul>
+      </div>
     </nav>
   </div>
   <div class="container-fluid" style="position:absolute; top:70%;">

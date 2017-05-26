@@ -1,6 +1,6 @@
 body{ 
   font-family: "HelveticaNeueW01-65Medi", Helvetica, Arial, sans-serif;
-  font-weight: lighter;
+  font-weight: normal;
   margin:0px 0px;
   padding:0px 0px;
   overflow-y: scroll; 
@@ -23,7 +23,7 @@ body{
 /* Extra Small */
 @media (max-width:576px) {
   html {
-    font-size: 8px;
+    font-size: 12px;
   }
   .card {
     min-height: 75px;
@@ -37,6 +37,30 @@ body{
   }
   .map{
     width:90vw;
+  }
+  #features {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+    top:3%;
+    right:17%;
+    width:70%;
+    height:30%;
+  }
+  #legend {
+    padding: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+    line-height: 18px;
+    height: 15%;
+    margin-bottom: 40px;
+    width: 30%;
+    right:17%;
+  }
+
+  #navbar-1 {
+    visibility: hidden;
+  }
+
+  #navbar-2 {
+    visibility: visible;
   }
 }
 /* Small */
@@ -53,6 +77,28 @@ body{
     top:80%; 
     left:40%; 
     color:white;
+  }
+  #features {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+    top:3%;
+    right:17%;
+    width:50%;
+    height:30%;
+  }
+  #legend {
+    padding: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+    line-height: 18px;
+    height: 15%;
+    margin-bottom: 40px;
+    width: 20%;
+    right:17%;
+  }
+  #navbar-1 {
+    visibility: visible;
+  }
+  #navbar-2 {
+    visibility: hidden;
   }
   
 }
@@ -73,10 +119,27 @@ body{
     color:white;
   }
 
+  #legend {
+    padding: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+    line-height: 18px;
+    height: 15%;
+    margin-bottom: 40px;
+    width: 10%;
+    right:17%;
+  }
+
   #features {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
     top:10%;
-    width:20%;
-    height:40%;
+    width:50%;
+    height:30%;
+  }
+  #navbar-1 {
+    visibility: visible;
+  }
+  #navbar-2 {
+    visibility: hidden;
   }
 }
 /* Large */
@@ -93,6 +156,28 @@ body{
     top:87%; 
     left:40%; 
     color:white;
+  }
+  #features {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+    top:3%;
+    right:17%;
+    width:20%;
+    height:40%;
+  }
+  #legend {
+    padding: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+    line-height: 18px;
+    height: 15%;
+    margin-bottom: 40px;
+    width: 10%;
+    right:17%;
+  }
+  #navbar-1 {
+    visibility: visible;
+  }
+  #navbar-2 {
+    visibility: hidden;
   }
 }
 
@@ -116,20 +201,27 @@ body{
   }
   
   #features {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
     top:3%;
     right:17%;
     width:20%;
     height:40%;
   }
-    #legend {
-      padding: 10px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
-      line-height: 18px;
-      height: 15%;
-      margin-bottom: 40px;
-      width: 10%;
-      right:17%;
-    }
+  #legend {
+    padding: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+    line-height: 18px;
+    height: 15%;
+    margin-bottom: 40px;
+    width: 10%;
+    right:17%;
+  }
+  #navbar-1 {
+    visibility: visible;
+  }
+  #navbar-2 {
+    visibility: hidden;
+  }
 }
 .container-fluid{
   padding-left: 0px;
