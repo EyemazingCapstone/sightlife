@@ -155,20 +155,20 @@
 
       function clickSingleA(a) {
         var items = document.querySelectorAll('.nav-link, .single');
-        var arr = Object.keys(items).map(function(k) { return items[k] });
+        var arr = Object.keys(items).map(function (k) { return items[k] });
         var index = arr.indexOf(a);
         var part1 = arr.slice(0, index);
         var part2 = arr.slice(index + 1);
         var others = part1.concat(part2);
         if (arr.length) {
-          others.forEach(function(element){
+          others.forEach(function (element) {
             $(element).closest('li').addClass('inactive');
           });
         }
         a.className = 'single active nav-link:active';
       }
-     // $('.nav-item').click(function () {
-       // clickSingleA(this);
+      // $('.nav-item').click(function () {
+      // clickSingleA(this);
       //});
 
       $('[data-toggle="affix"]').each(function () {
@@ -220,13 +220,13 @@
           legend.appendChild(item);
         });
 
-        
+
         var myChart = LineChart().width($('#features').width() * 0.9).height($('#features').height() * 0.9);
 
         map.on('click', function (e) {
-            var selectedStates = [];
-            var selectedData = [];
-            
+          var selectedStates = [];
+          var selectedData = [];
+
           selectedStates.length = 0;
           var states = map.queryRenderedFeatures(e.point, {
             layers: layers
@@ -244,27 +244,27 @@
             selectedStates.push(states[0].properties.NAME_1);
             document.getElementById('pd').innerHTML = '<h3><strong>' + states[0].properties.NAME_1 + "</strong></h3><div id='vis'></div>";
 
-            d3.csv('data/final.csv', function(error, data) {
+            d3.csv('data/final.csv', function (error, data) {
 
               console.log(myChart);
 
               var dataByCountry = d3.nest()
-                  .key(function(d) {
-                      //console.log(d)
-                      return d.State;
-                  })
-                  .entries(data);
+                .key(function (d) {
+                  //console.log(d)
+                  return d.State;
+                })
+                .entries(data);
 
               function filterData() {
-                  selectedData = dataByCountry.filter(function(d) {
-                      return selectedStates.indexOf(d.key) > -1
-                  })
+                selectedData = dataByCountry.filter(function (d) {
+                  return selectedStates.indexOf(d.key) > -1
+                })
               }
               filterData();
               console.log(selectedData);
               var chart = d3.select("#vis").selectAll('.chart')
-                  .data([selectedData])
-                  
+                .data([selectedData])
+
 
               chart.enter().append('div')
                 .attr('class', 'chart')
@@ -277,8 +277,8 @@
             document.getElementById('pd').innerHTML = "<p>Hover over a state within Indian boundaries</p>";
           }
 
-          
-          
+
+
         });
 
         document.getElementById('close').addEventListener('click', function () {
@@ -291,7 +291,7 @@
 
 <body data-spy="scroll" data-target="#navbar-example">
   <div class="container-fluid" style="top:25%;" id="home">
-    <div class="row"> 
+    <div class="row">
       <div class="col-sm-3 col-md-3 col-lg-3 offset-sm-1 offset-md-1 offset-lg-1">
         <a name="home"></a>
         <!-- TO-DO: Get rid of right whitespace in large displays-->
@@ -304,11 +304,14 @@
       </div>
     </div>
     <div style="position:relative;">
-      <img src="img/karthik_final.png" class="img-fluid" alt="Responsive image" style="width:100%;">
+      <div style="z-index:2; position:absolute; left:4%; top:75%;">
+      <button type="button" class="btn btn-primary"><a style= "color:white; width:100%;  "href="#contact-us">Large button</a></button>
+      </div>
+      <img src="img/karthik_final.png" class="img-fluid" alt="Responsive image" style="width:100%; z-index:1;">
     </div>
   </div>
   <div class="container-fluid">
-    <nav data-toggle="affix"  style="width:12%;" id="navbar-example"  style="z-index:2; position:absolute;">
+    <nav data-toggle="affix" style="width:12%;" id="navbar-example" style="z-index:2; position:absolute;">
       <!--<button class="navbar-toggler hidden-sm-up pull-xs-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
         ☰
     </button>
@@ -400,7 +403,7 @@
         <button type="button" class="close" aria-label="Close" id="close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <div id="pd" >
+        <div id="pd">
           <p>Click on your state!</p>
           <div id="vis">
           </div>
@@ -419,41 +422,41 @@
     </div>
     <div class="row" style="margin-top:50px;">
       <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2 ">
-      <div class="card-deck" >
-        
-        <div class="card text-center card-inverse" style="background-color:#645d9b;">
-          <h4 class="card-header" style="background-color:white; color:#6d6e70;">Better Quality Of Life</h4>
-          <div class="card-block">
-            <p>A policy that would require all hospitals to notify the tissue procurement organization of all deaths in a timely
-              manner.
-            </p>
+        <div class="card-deck">
+
+          <div class="card text-center card-inverse" style="background-color:#645d9b;">
+            <h4 class="card-header" style="background-color:white; color:#6d6e70;">Better Quality Of Life</h4>
+            <div class="card-block">
+              <p>A policy that would require all hospitals to notify the tissue procurement organization of all deaths in a
+                timely manner.
+              </p>
+            </div>
           </div>
-        </div>
-        <!--</div>-->
-        <!--<div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">-->
-        <div class="card text-center card-inverse" style="background-color:#645d9b;">
-          <h4 class="card-header" style="background-color:white; color:#6d6e70;">Better Educational Outcomes</h4>
-          <div class="card-block">
-            <p>A policy that would require all hospitals to notify the tissue procurement organization of all deaths in a timely
-              manner.
-            </p>
+          <!--</div>-->
+          <!--<div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">-->
+          <div class="card text-center card-inverse" style="background-color:#645d9b;">
+            <h4 class="card-header" style="background-color:white; color:#6d6e70;">Better Educational Outcomes</h4>
+            <div class="card-block">
+              <p>A policy that would require all hospitals to notify the tissue procurement organization of all deaths in a
+                timely manner.
+              </p>
+            </div>
           </div>
-        </div>
-        <!--</div>-->
-        <!--<div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">-->
-        <div class="card text-center card-inverse" style="background-color:#645d9b;">
-          <h4 class="card-header" style="background-color:white; color:#6d6e70;">Reintroduction to the Economy</h4>
-          <div class="card-block">
-            <p>A policy that would require all hospitals to notify the tissue procurement organization of all deaths in a timely
-              manner.
-            </p>
+          <!--</div>-->
+          <!--<div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">-->
+          <div class="card text-center card-inverse" style="background-color:#645d9b;">
+            <h4 class="card-header" style="background-color:white; color:#6d6e70;">Reintroduction to the Economy</h4>
+            <div class="card-block">
+              <p>A policy that would require all hospitals to notify the tissue procurement organization of all deaths in a
+                timely manner.
+              </p>
+            </div>
           </div>
+          <!-- </div>-->
         </div>
-        <!-- </div>-->
       </div>
     </div>
-    </div>
-  
+
 
     <div class="row" style="margin-top: 5%;  background:#645d9b; " id="contact-us">
       <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
@@ -488,7 +491,7 @@
       </div>
     </div>
   </div>
-</div>
+  </div>
 </body>
 
 </html>
