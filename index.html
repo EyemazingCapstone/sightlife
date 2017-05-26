@@ -119,6 +119,11 @@
   <script>
     $(document).ready(function () {
 
+      /*var windowWidth = $(window).width()
+      if (windowWidth < 568) {
+        $('#header-2').remove();
+      }*/
+
       
 
       /*var windowWidth = $(window).width();
@@ -134,7 +139,7 @@
         }
       }*/
 
-      $('body').scrollspy({ target: '#navbar-example' })
+      $('body').scrollspy({ target: '#navbar-1' })
       var toggleAffix = function (affixElement, scrollElement, wrapper) {
         var height = affixElement.outerHeight(),
           top = wrapper.offset().top;
@@ -236,7 +241,13 @@
 
           if (states.length > 0) {
             selectedStates.push(states[0].properties.NAME_1);
+            document.getElementById('caseStudy').style.visibility = 'hidden';
             document.getElementById('pd').innerHTML = '<h3><strong>' + states[0].properties.NAME_1 + "</strong></h3><div id='vis'></div>";
+            
+            if (selectedStates.indexOf('Delhi') != -1 || selectedStates.indexOf('Orissa') != -1){
+              document.getElementById('caseStudy').style.visibility = 'visible';
+              document.getElementById('case').innerHTML = '<h3><strong>' + states[0].properties.NAME_1 + '</strong></h3>';
+            }
 
             d3.csv('data/final.csv', function (error, data) {
 
@@ -275,8 +286,12 @@
 
         });
 
-        document.getElementById('close').addEventListener('click', function () {
+        document.getElementById('closeFeatures').addEventListener('click', function () {
           document.getElementById('features').style.visibility = 'hidden';
+        })
+
+        document.getElementById('closeCase').addEventListener('click', function () {
+          document.getElementById('caseStudy').style.visibility = 'hidden';
         })
       });
     });
@@ -285,8 +300,8 @@
 
 <body data-spy="scroll" data-target="#navbar-example">
   <div class="container-fluid" style="top:25%; width:100vw;" id="home">
-    <div class="row">
-      <div class="col-sm-3 col-md-3 col-lg-3 offset-sm-1 offset-md-1 offset-lg-1">
+    <div class="row" id="header-2">
+      <div class="col-sm-3 col-md-3 col-lg-3 offset-sm-1 offset-md-1 offset-lg-1" >
         <a name="home"></a>
         <!-- TO-DO: Get rid of right whitespace in large displays-->
         <a style="display:inline-block;" href="https://www.sightlife.org/">
@@ -297,7 +312,7 @@
         <h5 style="padding-top:2%;">Ending corneal blindness in India, one transplant at a time.</h5>
       </div>
     </div>
-    <div style="position:relative;">
+    <div id="heroImg" style="position:relative;">
       <div style="z-index:2; position:absolute; left:4%; top:75%;">
         <button type="button" class="btn btn-primary"><a  id="button-contact" style= "color:white; width:100%;  "href="#contact-us">Contact Us</a></button>
       </div>
@@ -330,32 +345,35 @@
       </ul>
       <!-- </div>-->
     </nav>
-    <nav data-toggle="affix" style="width:12%;" id="navbar-2" style="z-index:2; position:absolute;">
-      <button class="navbar-toggler hidden-sm-up pull-xs-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
-        ☰
-      </button>
-      <div class="collapse navbar-toggleable-xs" id="collapsingNavbar">
-        <ul class="nav flex-column nav-pills">
-          <li class="nav-item">
-            <a class="nav-link" href="#home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#policy">Policy</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#projections">Projections</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#benefits">Benefits</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact-us">Contact Us</a>
-          </li>
-        </ul>
+    <div>
+      <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top" id= "navbar-2">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href= "#"> <img src="./img/eye.jpg" style="width:20px; height:20px; margin-right:8px;" class="" alt= "SightLife"> SightLife</a>
+            <div class="collapse navbar-collapse" id="nav-content">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#policy">Policy</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#projections">Projections</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#benefits">Benefits</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#contact-us">Contact Us</a>
+                </li>
+              </ul>
+            </div>
+        </nav>
       </div>
-    </nav>
   </div>
-  <div class="container-fluid" style="position:absolute; top:70%;">
+  <div class="container-fluid" id="content">
     <div class="row" id="policy" style="z-index:1; position:relative;">
       <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
         <br>
@@ -365,15 +383,15 @@
           can help millions of people unlock life’s possibilities.</p><br>
         <p>A few simple policy changes would dramatically increase the number of transplant offerings available in India.</p><br>
         <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2" style="height:17rem;">
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/KeQZsJ9Xig4?autoplay=1" frameborder="0" allowfullscreen></iframe>
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/KeQZsJ9Xig4" frameborder="0" allowfullscreen></iframe>
         </div>
         <br><br>
       </div>
     </div>
-    <div class="row">
+    <div class="row" id="cards">
       <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2" style="padding-right:0; padding-left:0; width:100vw;">
         <div class="card-deck">
-          <div class="card text-center card-inverse" style="background-color:#645d9b;">
+          <div class="card text-center card-inverse" id="indivcard" style="background-color:#645d9b;">
             <h4 class="card-header" style="background-color:white; color:#6d6e70;">Mandatory Notification</h4>
             <div class="card-block">
               <p>A policy that would require all hospitals to notify the tissue procurement organization of all deaths in a
@@ -382,7 +400,7 @@
             </div>
           </div>
           <!--<div class="col-sm-4 col-md-4 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">-->
-            <div class="card text-center card-inverse" style="background-color:#645d9b;">
+            <div class="card text-center card-inverse" id="indivcard" style="background-color:#645d9b;">
               <h4 class="card-header" style="background-color:white; color:#6d6e70;">First-Person Consent</h4>
               <div class="card-block">
                 <p>A policy of first-person consent allows any person who wishes to donate their tissues to be used for transplantation,
@@ -420,7 +438,7 @@
     <div class="row map" style="position:relative;  height:80vh;">
       <div class="col-sm-8 offset-sm-2" id="map" style="position:static; top:0; bottom:0; width:100%; height:100%;"></div>
       <div class="map-overlay" id="features" style= "visibility:visible; right:17%;">
-        <button type="button" class="close" aria-label="Close" id="close">
+        <button type="button" class="close" aria-label="Close" id="closeFeatures">
           <span aria-hidden="true">&times;</span>
         </button>
         <div id="pd">
@@ -428,6 +446,16 @@
           <div id="vis">
           </div>
         </div>
+        
+      </div>
+
+      <div class="map-overlay" id="caseStudy" style= "visibility:hidden;">
+        <button type="button" class="close" aria-label="Close" id="closeCase">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div id="case">
+        </div>
+        
       </div>
       <div class="map-overlay" id="legend" style="position:absolute;"><span>Policy in place:</span></div>
     </div>
@@ -440,10 +468,10 @@
         <h3>How does HCRP benefit your population?</h3>
       </div>
     </div>
-    <div class="row" style="margin-top:50px;">
+    <div class="row" style="margin-top:50px;" id="cards">
       <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2 " style="padding-right:0; padding-left:0; width:100vw;">
         <div class="card-deck">
-          <div class="card text-center card-inverse" style="background-color:#645d9b;">
+          <div class="card text-center card-inverse" id="indivcard" style="background-color:#645d9b;">
             <h4 class="card-header" style="background-color:white; color:#6d6e70; padding-top:8%;">Better Quality Of Life</h4>
             <div class="card-block">
               <p>A policy that would require all hospitals to notify the tissue procurement organization of all deaths in a
@@ -453,7 +481,7 @@
           </div>
           <!--</div>-->
           <!--<div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">-->
-          <div class="card text-center card-inverse" style="background-color:#645d9b;">
+          <div class="card text-center card-inverse" id="indivcard" style="background-color:#645d9b;">
             <h4 class="card-header" style="background-color:white; color:#6d6e70;">Better Educational Outcomes</h4>
             <div class="card-block">
               <p>A policy that would require all hospitals to notify the tissue procurement organization of all deaths in a
@@ -463,7 +491,7 @@
           </div>
           <!--</div>-->
           <!--<div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">-->
-          <div class="card text-center card-inverse" style="background-color:#645d9b;">
+          <div class="card text-center card-inverse" id="indivcard" style="background-color:#645d9b;">
             <h4 class="card-header" style="background-color:white; color:#6d6e70;">Reintroduction to the Economy</h4>
             <div class="card-block">
               <p>A policy that would require all hospitals to notify the tissue procurement organization of all deaths in a
