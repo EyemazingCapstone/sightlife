@@ -173,3 +173,6 @@ nav, ul, li {
   color:white;
   
 }
+.chart {
+  fill: none;
+}

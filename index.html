@@ -28,6 +28,7 @@
 
   <!--App-->
   <script type="text/javascript" src="js/projections_line.js"></script>
+  <script type="text/javascript" src="js/LineChart.js"></script>
   <title>SightLife Global Data Portal</title>
   <script>
     $(document).ready(function () {
@@ -218,7 +219,15 @@
           item.appendChild(value);
           legend.appendChild(item);
         });
+
+        
+        var myChart = LineChart().width($('#features').width() * 0.9).height($('#features').height() * 0.9);
+
         map.on('click', function (e) {
+            var selectedStates = [];
+            var selectedData = [];
+            
+          selectedStates.length = 0;
           var states = map.queryRenderedFeatures(e.point, {
             layers: layers
           });
@@ -232,10 +241,44 @@
 
 
           if (states.length > 0) {
-            document.getElementById('pd').innerHTML = '<h3><strong>' + states[0].properties.NAME_1 + "</strong></h3>";
+            selectedStates.push(states[0].properties.NAME_1);
+            document.getElementById('pd').innerHTML = '<h3><strong>' + states[0].properties.NAME_1 + "</strong></h3><div id='vis'></div>";
+
+            d3.csv('data/final.csv', function(error, data) {
+
+              console.log(myChart);
+
+              var dataByCountry = d3.nest()
+                  .key(function(d) {
+                      //console.log(d)
+                      return d.State;
+                  })
+                  .entries(data);
+
+              function filterData() {
+                  selectedData = dataByCountry.filter(function(d) {
+                      return selectedStates.indexOf(d.key) > -1
+                  })
+              }
+              filterData();
+              console.log(selectedData);
+              var chart = d3.select("#vis").selectAll('.chart')
+                  .data([selectedData])
+                  
+
+              chart.enter().append('div')
+                .attr('class', 'chart')
+                .merge(chart)
+                .call(myChart);
+
+
+            });
           } else {
             document.getElementById('pd').innerHTML = "<p>Hover over a state within Indian boundaries</p>";
           }
+
+          
+          
         });
 
         document.getElementById('close').addEventListener('click', function () {
@@ -301,7 +344,7 @@
           can help millions of people unlock life’s possibilities.</p><br>
         <p>A few simple policy changes would dramatically increase the number of transplant offerings available in India.</p><br>
         <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2" style="height:17rem;">
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/KeQZsJ9Xig4" frameborder="0" allowfullscreen></iframe>
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/KeQZsJ9Xig4?autoplay=1" frameborder="0" allowfullscreen></iframe>
         </div>
         <br><br>
       </div>
@@ -353,12 +396,14 @@
     </div>
     <div class="row" style="position:relative;">
       <div class="col-sm-8 offset-sm-2" id="map" style="position:static; top:0; bottom:0; width:100%; height:500px;"></div>
-      <div class="map-overlay" id="features" style="right:15%; visibility:visible;">
+      <div class="map-overlay" id="features" style="right:15%; visibility:visible; width:20%; height: 50%;">
         <button type="button" class="close" aria-label="Close" id="close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <div id="pd">
+        <div id="pd" >
           <p>Click on your state!</p>
+          <div id="vis">
+          </div>
         </div>
       </div>
       <div class="map-overlay" id="legend" style="position:absolute; right:15%; width:11%; height:17%;">Policy in place:</div>
