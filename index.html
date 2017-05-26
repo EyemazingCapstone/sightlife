@@ -74,11 +74,6 @@
     });
   </script>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-    }
-    
     h2,
     h3 {
       margin: 10px;
@@ -100,7 +95,7 @@
       bottom: 0;
       right: 0;
       background: rgba(255, 255, 255, 0.8);
-      margin-right: 20px;
+      margin-right: 0px;
       font-family: Arial, sans-serif;
       overflow: auto;
       border-radius: 3px;
@@ -288,7 +283,7 @@
 </head>
 
 <body data-spy="scroll" data-target="#navbar-example">
-  <div class="container-fluid" style="top:25%;" id="home">
+  <div class="container-fluid" style="top:25%; width:100vw;" id="home">
     <div class="row">
       <div class="col-sm-3 col-md-3 col-lg-3 offset-sm-1 offset-md-1 offset-lg-1">
         <a name="home"></a>
@@ -351,7 +346,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
+      <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2" style="padding-right:0; padding-left:0; width:100vw;">
         <div class="card-deck">
           <div class="card text-center card-inverse" style="background-color:#645d9b;">
             <h4 class="card-header" style="background-color:white; color:#6d6e70;">Mandatory Notification</h4>
@@ -397,7 +392,7 @@
           offering can increase when policies of mandatory notification and first person consent are implemented.</p><br>
       </div>
     </div>
-    <div class="row" style="position:relative; width:100vw; height:80vh;">
+    <div class="row map" style="position:relative;  height:80vh;">
       <div class="col-sm-8 offset-sm-2" id="map" style="position:static; top:0; bottom:0; width:100%; height:100%;"></div>
       <div class="map-overlay" id="features" style="right:15%; visibility:visible; width:20%; height: 50%;">
         <button type="button" class="close" aria-label="Close" id="close">
@@ -411,7 +406,7 @@
       </div>
       <div class="map-overlay" id="legend" style="position:absolute; right:15%; width:11%; height:17%;">Policy in place:</div>
     </div>
-    <div class="row">
+    <div class="row" style="width:100vw;">
       <br><br><br><br><br>
     </div>
     <div style="position:relative;" id="benefits">
@@ -421,7 +416,7 @@
       </div>
     </div>
     <div class="row" style="margin-top:50px;">
-      <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2 ">
+      <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2 " style="padding-right:0; padding-left:0; width:100vw;">
         <div class="card-deck">
           <div class="card text-center card-inverse" style="background-color:#645d9b;">
             <h4 class="card-header" style="background-color:white; color:#6d6e70;">Better Quality Of Life</h4>
@@ -457,7 +452,7 @@
     </div>
 
 
-    <div class="row" style="margin-top: 5%;  background:#645d9b; " id="contact-us">
+    <div class="row" style="margin-top: 5%; width:100vw;  background:#645d9b; " id="contact-us">
       <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
         <h3 class="h3" style="color:white;text-align:center; padding-top:1.5%;"> Want to get started? Contact SightLife today!</h3>
       </div>

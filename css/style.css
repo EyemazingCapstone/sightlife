@@ -1,10 +1,11 @@
 body{ 
   font-family: "HelveticaNeueW01-65Medi", Helvetica, Arial, sans-serif;
   font-weight: lighter;
-  margin:0px 0px; 
+  margin:0px 0px;
+  padding:0px 0px;
   overflow-y: scroll; 
   overflow-x:hidden;
-  width:100%;
+  width:100vw;
   color:#6d6e70;
   position: relative;
 }
@@ -34,6 +35,9 @@ body{
     left:10%; 
     color:white;
   }
+  .map{
+    width:90vw;
+  }
 }
 /* Small */
 @media (min-width:576px) {
@@ -50,6 +54,7 @@ body{
     left:40%; 
     color:white;
   }
+  
 }
 
 /* Medium */
@@ -179,4 +184,9 @@ nav, ul, li {
 
 #button-contact:hover{
   text-decoration:none;
+}
+
+.row{
+  margin-right:0;
+  margin-left:0;
 }
