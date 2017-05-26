@@ -176,3 +176,7 @@ nav, ul, li {
 .chart {
   fill: none;
 }
+
+#button-contact:hover{
+  text-decoration:none;
+}
