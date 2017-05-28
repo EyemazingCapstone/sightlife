@@ -12,9 +12,11 @@
     crossorigin="anonymous">
   <!--CSS-->
   <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
   <!--<link rel="stylesheet" type="text/css" href="css/projections.css" />-->
   <!--D3-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.4/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.js"></script>
   <!--jQuery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <!--Tether-->
@@ -27,7 +29,6 @@
   <script src='https://api.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.js'></script>
 
   <!--App-->
-  <script type="text/javascript" src="js/projections_line.js"></script>
   <script type="text/javascript" src="js/LineChart.js"></script>
   <title>SightLife Global Data Portal</title>
   <script>
@@ -220,7 +221,7 @@
         });
 
 
-        var myChart = LineChart().width($('#features').width() * 0.9).height($('#features').height() * 0.9);
+        var myChart = LineChart().width($('#features').width() * 1).height($('#features').height() * 0.5).margin([$('#features').height() * 0,$('#features').width() * 0.4, $('#features').height() * 0.1, $('#features').width() * 0.1]);
 
         map.on('click', function (e) {
           var selectedStates = [];
@@ -242,16 +243,22 @@
           if (states.length > 0) {
             selectedStates.push(states[0].properties.NAME_1);
             document.getElementById('caseStudy').style.visibility = 'hidden';
-            document.getElementById('pd').innerHTML = '<h3><strong>' + states[0].properties.NAME_1 + "</strong></h3><div id='vis'></div>";
+            document.getElementById('pd').innerHTML = '<div style="background-color:#E0F2F1; padding-top:1%; padding-left:1%;"><h3 style="margin:0px;"><strong>' + states[0].properties.NAME_1 + "</strong></h3></div><div id='vis'></div>";
             
-            if (selectedStates.indexOf('Delhi') != -1 || selectedStates.indexOf('Orissa') != -1){
+            if (selectedStates.indexOf('Delhi') != -1){
               document.getElementById('caseStudy').style.visibility = 'visible';
-              document.getElementById('case').innerHTML = '<h3><strong>' + states[0].properties.NAME_1 + '</strong></h3>';
+              document.getElementById('case').innerHTML = 
+              "<h6 style='padding-top:3%; padding-left:3%;'>Case Study: Delhi</h6><img src='img/291_Sightlife_India_Margot_Duane-1326.jpg' class='img-fluid' alt='Responsive image' style='width:50%; margin-left:25%;'/><p style='font-size:0.65rem;'>SightLife used an innovative public private partnership approach that increased corneal availability in <a href='https://doc.co/e87PGY/Te9zsx'>Delhi</a> by almost 400% over four years.</p>";
+            }
+            if (selectedStates.indexOf('Orissa') != -1){
+              document.getElementById('caseStudy').style.visibility = 'visible';
+              document.getElementById('case').innerHTML = 
+              "<h6 style='padding-top:3%; padding-left:3%;'>Case Study: Bhubaneswar</h6><img src='img/415_Sightlife_India_Margot_Duane-2385.jpg' class='img-fluid' alt='Responsive image' style='width:50%; margin-left:25%;'/><p style='font-size:0.65rem;'><a href='https://doc.co/TKyD59'>Learn more</a> about how the SightLife eye bank partnership in Bhubaneswar, Odisha increased the number of transplant offerings by 115% over a four year period.</p>";
             }
 
             d3.csv('data/final.csv', function (error, data) {
 
-              console.log(myChart);
+              //console.log(myChart);
 
               var dataByCountry = d3.nest()
                 .key(function (d) {
@@ -266,12 +273,25 @@
                 })
               }
               filterData();
-              console.log(selectedData);
+              console.log(selectedData[0].values[0].population);
+              var info = d3.select('#vis').selectAll('.info')
+                .data([selectedData])
+
+              info.enter().append('div')
+                .style('background', '#E0F2F1')
+                .attr('class', 'info')
+                .merge(info)
+                .append('text')
+                .text(selectedData[0].values[0].population + ' population ')
+              info.enter().append('div').style('background', '#E0F2F1').attr('class', 'info2').merge(info)
+                .append('text')
+                .text(selectedData[0].values[0].urbanPop + ' urban population');
+
               var chart = d3.select("#vis").selectAll('.chart')
                 .data([selectedData])
 
-
               chart.enter().append('div')
+                .style('padding-top', '1%')
                 .attr('class', 'chart')
                 .merge(chart)
                 .call(myChart);
@@ -298,12 +318,11 @@
   </script>
 </head>
 
-<body data-spy="scroll" data-target="#navbar-example">
+<body data-spy="scroll" data-target="#navbar-1">
   <div class="container-fluid" style="top:25%; width:100vw;" id="home">
     <div class="row" id="header-2">
       <div class="col-sm-3 col-md-3 col-lg-3 offset-sm-1 offset-md-1 offset-lg-1" >
         <a name="home"></a>
-        <!-- TO-DO: Get rid of right whitespace in large displays-->
         <a style="display:inline-block;" href="https://www.sightlife.org/">
           <img src="./img/logo-SightLife_no-tagline.png" class="img-fluid" alt="SightLife">
         </a>
@@ -314,18 +333,13 @@
     </div>
     <div id="heroImg" style="position:relative;">
       <div style="z-index:2; position:absolute; left:4%; top:75%;">
-        <button type="button" class="btn btn-primary"><a  id="button-contact" style= "color:white; width:100%;  "href="#contact-us">Contact Us</a></button>
+        <button type="button" class="btn btn-primary" id="button1"><a  id="button-contact" style= "color:white; width:100%;  "href="#contact-us">Contact Us</a></button>
       </div>
       <img src="img/karthik_final.png" class="img-fluid" alt="Responsive image" style="width:100%; z-index:1;">
     </div>
   </div>
   <div class="container-fluid">
     <nav data-toggle="affix" style="width:12%;" id="navbar-1" style="z-index:2; position:absolute;">
-      <!--<button class="navbar-toggler hidden-sm-up pull-xs-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
-        ☰
-    </button>
-      <a class="navbar-brand" href="#">Brand</a>
-      <div class="collapse navbar-toggleable-xs" id="collapsingNavbar">-->
       <ul class="nav flex-column nav-pills">
         <li class="nav-item">
           <a class="nav-link" href="#home">Home</a>
@@ -343,7 +357,6 @@
           <a class="nav-link" href="#contact-us">Contact Us</a>
         </li>
       </ul>
-      <!-- </div>-->
     </nav>
     <div>
       <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top" id= "navbar-2">
@@ -376,13 +389,12 @@
   <div class="container-fluid" id="content">
     <div class="row" id="policy" style="z-index:1; position:relative;">
       <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
-        <br>
         <p>More than half the world's corneal blind live in India.</p><br>
         <p>Nearly 6 million Indian citizens suffer from corneal blindness in either one or both eyes. But we can change that.
           By increasing the number of transplants available in India through policy change and program implementation, we
           can help millions of people unlock life’s possibilities.</p><br>
         <p>A few simple policy changes would dramatically increase the number of transplant offerings available in India.</p><br>
-        <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2" style="height:17rem;">
+        <div class="col-sm-10 col-md-10 col-lg-10 offset-sm-1 offset-md-1 offset-lg-1" style="height:17rem;">
           <iframe width="100%" height="100%" src="https://www.youtube.com/embed/KeQZsJ9Xig4" frameborder="0" allowfullscreen></iframe>
         </div>
         <br><br>
@@ -408,10 +420,10 @@
                 </p>
               </div>
             </div>
-         <!-- </div>-->
+         </div>
         </div>
       </div>
-    </div>
+    <!--</div>-->
     <div style="text-align:center;">
       <div class="row">
         <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
@@ -457,10 +469,10 @@
         </div>
         
       </div>
-      <div class="map-overlay" id="legend" style="position:absolute;"><span>Policy in place:</span></div>
+      <div class="map-overlay" id="legend" style="position:absolute;"><span><img src="img/star-15.svg" class="img-fluid" style="width:10%; height:15%;"> Case Study</span><br><span>Policy in place:</span></div>
     </div>
     <div class="row" style="width:100vw;">
-      <br><br><br><br><br>
+      <br><br><br>
     </div>
     <div style="position:relative;" id="benefits">
       <img src="img/dharender_final.png" class="img-fluid" alt="Responsive image" style="width:100%;">
@@ -474,28 +486,37 @@
           <div class="card text-center card-inverse" id="indivcard" style="background-color:#645d9b;">
             <h4 class="card-header" style="background-color:white; color:#6d6e70; padding-top:8%;">Better Quality Of Life</h4>
             <div class="card-block">
-              <p>A policy that would require all hospitals to notify the tissue procurement organization of all deaths in a
-                timely manner.
+              <p>
+                <ul id="bullets"><li id="bullets">Improved quality of life and reduced burden of disease</li>
+               <li id="bullets">Reduced co-morbidities and mortality</li>
+               <li id="bullets">Reduced child mortality</li>
+               <li id="bullets">Reduced hospitalisations, length of stay, and other health system costs</li></ul>
               </p>
             </div>
           </div>
           <!--</div>-->
           <!--<div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">-->
           <div class="card text-center card-inverse" id="indivcard" style="background-color:#645d9b;">
-            <h4 class="card-header" style="background-color:white; color:#6d6e70;">Better Educational Outcomes</h4>
+            <h4 class="card-header" style="background-color:white; color:#6d6e70;">Economic Benefits</h4>
             <div class="card-block">
-              <p>A policy that would require all hospitals to notify the tissue procurement organization of all deaths in a
-                timely manner.
+              <p>
+                <ul id="bullets"><li id="bullets">Increased employment and income to the visually impaired and caretaker</li>
+               <li id="bullets">Reduced welfare costs to the visually impaired and carer</li>
+               <li id="bullets">Achieving universal primary education by either ability for current carers to receive education or visually impaired children to access education</li></ul>
               </p>
             </div>
           </div>
           <!--</div>-->
           <!--<div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">-->
           <div class="card text-center card-inverse" id="indivcard" style="background-color:#645d9b;">
-            <h4 class="card-header" style="background-color:white; color:#6d6e70;">Reintroduction to the Economy</h4>
+            <h4 class="card-header" style="background-color:white; color:#6d6e70;">Social Benefits</h4>
             <div class="card-block">
-              <p>A policy that would require all hospitals to notify the tissue procurement organization of all deaths in a
-                timely manner.
+              <p><ul id="bullets"><li id="bullets">Increased independence</li>
+              <li id="bullets">Increased self-esteem and improved social networks</li>
+              <li id="bullets">Reduced extreme poverty and hunger</li>
+              <li id="bullets">Increased gender equality</li>
+              <li id="bullets">Increased community participation</li></ul>
+
               </p>
             </div>
           </div>
@@ -507,31 +528,31 @@
 
     <div class="row" style="margin-top: 5%; width:100vw;  background:#645d9b; " id="contact-us">
       <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
-        <h3 class="h3" style="color:white;text-align:center; padding-top:1.5%;"> Want to get started? Contact SightLife today!</h3>
+        <h3 class="h3" style="color:white;text-align:center; padding-top:1.5%; font-size:1rem;"> Want to get started? Contact SightLife today!</h3>
       </div>
     </div>
     <div class="row" style="margin-top:3%; margin-bottom:2%;">
       <div class="col-sm-6 col-md-6 col-lg-6 offset-sm-3 offset-md-3 offset-lg-3">
-        <form action="mailto:sarah.g.stanton@gmail.com" method="POST" , enctype="text/plain">
+        <form action="mailto:Josie.Noah@sightlife.org" method="POST" , enctype="text/plain">
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Your Name">
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Your Name" name="name">
           </div>
           <div class="form-group">
             <label for="job-title">Job Title</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Your Job Title">
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Your Job Title" name="Job title">
           </div>
           <div class="form-group">
             <label for="state">State Represented</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Your State">
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Your State" name="State">
           </div>
           <div class="form-group">
             <label for="phone">Phone Number</label>
-            <input type="tel" class="form-control" id="phone-input" placeholder="9999999999">
+            <input type="tel" class="form-control" id="phone-input" placeholder="9999999999" name="Phone">
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email-input" placeholder="me@some_email.com">
+            <input type="email" class="form-control" id="email-input" placeholder="me@some_email.com" name="Email">
           </div>
           <button type="submit" class="btn btn-primary float-right">Send</button>
         </form>

@@ -23,15 +23,17 @@ body{
 /* Extra Small */
 @media (max-width:576px) {
   html {
-    font-size: 12px;
+    font-size: 22px;
   }
   .card {
     min-height: 75px;
     width: 100%;
   }
   .imgtext {
+    font-size: 0.75rem;
+    text-align: center;
     position:absolute; 
-    top:80%; 
+    top:65%; 
     left:10%; 
     color:white;
   }
@@ -43,15 +45,16 @@ body{
     top:3%;
     right:17%;
     width:70%;
-    height:30%;
+    height:40%;
   }
   #legend {
+    font-size: 0.5rem;
     padding: 10px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
     line-height: 18px;
     height: 20%;
-    margin-bottom: 40px;
-    width: 33%;
+    margin-bottom: 20px;
+    width: 40%;
     right:17%;
   }
 
@@ -68,7 +71,7 @@ body{
   }
   #content {
     position:absolute; 
-    top:55%;
+    top:48%;
   }
   #cards {
     margin-left: 10%;
@@ -78,28 +81,43 @@ body{
     margin-bottom: 10%;
   }
   #heroImg {
-    margin-top: 5%;
+    margin-top: 15%;
   }
   #caseStudy {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
-    bottom:30%;
+    bottom:25%;
     right:17%;
     width:70%;
     height:30%;
   }
+  #button1 {
+    padding: 12%;
+    top: 70%;
+    font-size: 50%;
+  }
+  
 }
 /* Small */
 @media (min-width:576px) {
   html {
-    font-size: 12px;
+    font-size: 22px;
   }
   .card {
-    min-height: 150px;
-    width: 20rem;
+    min-height: 75px;
+    width: 100%;
+  }
+  /*#cards {
+    margin-left: 10%;
+    margin-right: 10%;
+  }*/
+  #indivcard {
+    margin-bottom: 10%;
   }
   .imgtext {
+    font-size: 1rem;
+    text-align: center;
     position:absolute; 
-    top:80%; 
+    top:70%; 
     left:40%; 
     color:white;
   }
@@ -108,15 +126,16 @@ body{
     top:3%;
     right:17%;
     width:50%;
-    height:30%;
+    height:40%;
   }
   #legend {
+    font-size: 0.5rem;
     padding: 10px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
     line-height: 18px;
-    height: 15%;
-    margin-bottom: 40px;
-    width: 20%;
+    height: 17%;
+    margin-bottom: 20px;
+    width: 30%;
     right:17%;
   }
   #navbar-1 {
@@ -131,14 +150,22 @@ body{
   }
   #content {
     position:absolute; 
-    top:70%;
+    top:80%;
   }
   #caseStudy {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
-    bottom:30%;
+    bottom:25%;
     right:17%;
     width:50%;
     height:30%;
+  }
+  .nav {
+    font-size: 10px;
+  }
+  .button1 {
+    top: 70%;
+    font-size: 50%;
+    padding: 12%;
   }
   
 }
@@ -146,7 +173,7 @@ body{
 /* Medium */
 @media (min-width:768px) {
   html {
-    font-size: 16px;
+    font-size: 26px;
   }
   .card {
     min-height: 150px;
@@ -160,20 +187,21 @@ body{
   }
 
   #legend {
+    font-size: 0.5rem;
     padding: 10px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
     line-height: 18px;
-    height: 15%;
-    margin-bottom: 40px;
-    width: 10%;
+    height: 17%;
+    margin-bottom: 20px;
+    width: 30%;
     right:17%;
   }
 
   #features {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
-    top:10%;
+    top:2%;
     width:50%;
-    height:30%;
+    height:40%;
   }
   #navbar-1 {
     visibility: visible;
@@ -186,20 +214,28 @@ body{
   }
   #content {
     position:absolute; 
-    top:70%;
+    top:80%;
   }
   #caseStudy {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
-    bottom:25%;
+    bottom:23%;
     right:17%;
     width:50%;
     height:30%;
+  }
+  .nav {
+    font-size: 14px;
+  }
+  .button1 {
+    top: 70%;
+    font-size: 50%;
+    padding: 12%;
   }
 }
 /* Large */
 @media (min-width:992px) {
   html {
-    font-size: 18px;
+    font-size: 26px;
   }
   .card {
     min-height: 150px;
@@ -215,14 +251,15 @@ body{
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
     top:3%;
     right:17%;
-    width:20%;
+    width:25%;
     height:40%;
   }
   #legend {
+    font-size: 0.5rem;
     padding: 10px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
     line-height: 18px;
-    height: 15%;
+    height: 17%;
     margin-bottom: 40px;
     width: 10%;
     right:17%;
@@ -238,21 +275,29 @@ body{
   }
   #content {
     position:absolute; 
-    top:70%;
+    top:80%;
   }
   #caseStudy {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
     top:3%;
     left:25%;
-    width:20%;
-    height:30%;
+    width:25%;
+    height:80%;
+  }
+  .nav {
+    font-size: 18px;
+  }
+  .button1 {
+    top: 70%;
+    font-size: 50%;
+    padding: 12%;
   }
 }
 
 /* Ex large */
 @media (min-width:1200px) {
   html {
-    font-size: 20px;
+    font-size: 26px;
   }
   .card {
     min-height: 150px;
@@ -272,14 +317,15 @@ body{
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
     top:3%;
     right:17%;
-    width:20%;
-    height:40%;
+    width:23%;
+    height:60%;
   }
   #legend {
+    font-size: 0.5rem;
     padding: 10px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
     line-height: 18px;
-    height: 15%;
+    height: 17%;
     margin-bottom: 40px;
     width: 10%;
     right:17%;
@@ -295,14 +341,22 @@ body{
   }
   #content {
     position:absolute; 
-    top:75%;
+    top:80%;
   }
   #caseStudy {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
     top:3%;
     left:25%;
     width:20%;
-    height:30%;
+    height:80%;
+  }
+  .nav {
+    font-size: 20px;
+  }
+  .button1 {
+    top: 70%;
+    font-size: 50%;
+    padding: 12%;
   }
 }
 .container-fluid{
@@ -390,4 +444,38 @@ nav, ul, li {
 .card-header{
   height:35%;
 }
+#bullets{
+  font-size: 0.6rem;
+  background-color: #645D9B;
+  text-align: left;
+  color: white;
+  padding: 1%;
+}
 
+.label {
+  color: black;
+  fill: black;
+  font-size: 0.4rem;
+}
+form {
+  font-size: 0.65rem;
+}
+
+.form-control {
+  font-size: 0.65rem;
+}
+#vis {
+  font-size: 0.65rem;
+}
+.info {
+  padding-top: 1%;
+  padding-left: 1%;
+}
+.info2 {
+  padding-left: 1%;
+  padding-bottom: 2%;
+}
+.btn-primary {
+  background-color: #499996;
+  border: #499996;
+}
