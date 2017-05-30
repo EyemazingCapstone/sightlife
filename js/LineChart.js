@@ -112,7 +112,7 @@ var LineChart = function() {
 
         svgEnter.append("g")
             //.attr("class", "legendQuant")
-            .attr("transform", "translate(" + (drawWidth + margin.right / 3)+ "," + 5 + ")")
+            .attr("transform", "translate(" + (drawWidth - margin.right * 1.5)+ "," + (drawHeight + margin.bottom / 3) + ")")
             .append('g')
             .attr('class','legendOrdinal');
 
@@ -121,9 +121,9 @@ var LineChart = function() {
             //.labels(d3.legendHelpers.thresholdLabels)
             //.labels(["No policy", "Mandatory Notification", "MN and First Person Consent"])
             .labelWrap(30)
-            .shapeWidth(20)
+            .shapeWidth(80)
             //.labelAlign("start")
-            //.orient('horizontal')
+            .orient('horizontal')
             .scale(ordinal);
 
         svgEnter.select(".legendOrdinal")
