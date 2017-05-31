@@ -12,7 +12,7 @@
     crossorigin="anonymous">
   <!--CSS-->
   <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <link rel="icon" href="img/favicon.ico" type="image/x-icon" alt="SightLife link"/>
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" alt="SightLife link" />
   <!--<link rel="stylesheet" type="text/css" href="css/projections.css" />-->
   <!--D3-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.4/d3.min.js"></script>
@@ -80,17 +80,17 @@
       margin: 10px;
       font-size: 1.2em;
     }
-    
+
     h3 {
       font-size: 1em;
     }
-    
+
     p {
       font-size: 0.85em;
       margin: 10px;
       text-align: left;
     }
-    
+
     .map-overlay {
       position: absolute;
       bottom: 0;
@@ -101,14 +101,14 @@
       overflow: auto;
       border-radius: 3px;
     }
-    
+
     #map {
       position: absolute;
       top: 0;
       bottom: 0;
       width: 100%;
     }
-    
+
     .legend-key {
       display: inline-block;
       border-radius: 20%;
@@ -125,7 +125,7 @@
         $('#header-2').remove();
       }*/
 
-      
+
 
       /*var windowWidth = $(window).width();
       if(windowWidth < 768) {
@@ -221,7 +221,7 @@
         });
 
 
-        var myChart = LineChart().width($('#features').width() * 1.2).height(300).margin([$('#features').height() * 0,$('#features').width() * 0.4, 130, $('#features').width() * 0.1]);
+        var myChart = LineChart().width($('#features').width() * 1.2).height(300).margin([$('#features').height() * 0, $('#features').width() * 0.4, 130, $('#features').width() * 0.1]);
 
         map.on('click', function (e) {
           var selectedStates = [];
@@ -244,16 +244,16 @@
             selectedStates.push(states[0].properties.NAME_1);
             document.getElementById('caseStudy').style.visibility = 'hidden';
             document.getElementById('pd').innerHTML = '<div style="background-color:#E0F2F1; padding-top:1%; padding-left:1%;"><h3 style="margin:0px;"><strong>' + states[0].properties.NAME_1 + "</strong></h3></div><div id='vis'></div>";
-            
-            if (selectedStates.indexOf('Delhi') != -1){
+
+            if (selectedStates.indexOf('Delhi') != -1) {
               document.getElementById('caseStudy').style.visibility = 'visible';
-              document.getElementById('case').innerHTML = 
-              "<h6 style='padding-top:3%; padding-left:3%;'>Case Study: Delhi</h6><img src='img/291_Sightlife_India_Margot_Duane-1326.jpg' class='img-fluid' alt='SightLife recipient in Delhi gets a successful eye transplant' style='width:50%; margin-left:25%;'/><p style='font-size:0.65rem;'>SightLife used an innovative public private partnership approach that increased corneal availability in <a href='https://doc.co/e87PGY/Te9zsx'>Delhi</a> by almost 400% over four years.</p>";
+              document.getElementById('case').innerHTML =
+                "<h6 style='padding-top:3%; padding-left:3%;'>Case Study: Delhi</h6><img src='img/291_Sightlife_India_Margot_Duane-1326.jpg' class='img-fluid' alt='SightLife recipient in Delhi gets a successful eye transplant' style='width:50%; margin-left:25%;'/><p style='font-size:0.65rem;'>SightLife used an innovative public private partnership approach that increased corneal availability in <a href='https://doc.co/e87PGY/Te9zsx'>Delhi</a> by almost 400% over four years.</p>";
             }
-            if (selectedStates.indexOf('Orissa') != -1){
+            if (selectedStates.indexOf('Orissa') != -1) {
               document.getElementById('caseStudy').style.visibility = 'visible';
-              document.getElementById('case').innerHTML = 
-              "<h6 style='padding-top:3%; padding-left:3%;'>Case Study: Bhubaneswar</h6><img src='img/415_Sightlife_India_Margot_Duane-2385.jpg' class='img-fluid' alt='SightLife staff in Bhubaneswar' style='width:50%; margin-left:25%;'/><p style='font-size:0.65rem;'><a href='https://doc.co/TKyD59'>Learn more</a> about how the SightLife eye bank partnership in Bhubaneswar, Odisha increased the number of transplant offerings by 115% over a four year period.</p>";
+              document.getElementById('case').innerHTML =
+                "<h6 style='padding-top:3%; padding-left:3%;'>Case Study: Bhubaneswar</h6><img src='img/415_Sightlife_India_Margot_Duane-2385.jpg' class='img-fluid' alt='SightLife staff in Bhubaneswar' style='width:50%; margin-left:25%;'/><p style='font-size:0.65rem;'><a href='https://doc.co/TKyD59'>Learn more</a> about how the SightLife eye bank partnership in Bhubaneswar, Odisha increased the number of transplant offerings by 115% over a four year period.</p>";
             }
 
             d3.csv('data/final.csv', function (error, data) {
@@ -321,7 +321,7 @@
 <body data-spy="scroll" data-target="#navbar-1">
   <div class="container-fluid" style="top:25%; width:100vw;" id="home">
     <div class="row" id="header-2">
-      <div class="col-sm-3 col-md-3 col-lg-3 offset-sm-1 offset-md-1 offset-lg-1" >
+      <div class="col-sm-3 col-md-3 col-lg-3 offset-sm-1 offset-md-1 offset-lg-1">
         <a name="home"></a>
         <a style="display:inline-block;" href="https://www.sightlife.org/">
           <img src="./img/logo-SightLife_no-tagline.png" class="img-fluid" alt="SightLife Logo Icon">
@@ -359,32 +359,33 @@
       </ul>
     </nav>
     <div>
-      <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top" id= "navbar-2">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+      <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top" id="navbar-2">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content"
+          aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href= "#"> <img src="./img/eye.jpg" style="width:20px; height:20px; margin-right:8px;" class="" alt= "SightLife"> SightLife</a>
-            <div class="collapse navbar-collapse" id="nav-content">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="#home" alt="Home link">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#policy" alt="Policy link">Policy</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#projections" alt="Projections link">Projections</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#benefits" alt="Benefits link">Benefits</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#contact-us" alt="Contact Us link">Contact Us</a>
-                </li>
-              </ul>
-            </div>
-        </nav>
-      </div>
+        <a class="navbar-brand" href="#"> <img src="./img/eye.jpg" style="width:20px; height:20px; margin-right:8px;" class="" alt= "SightLife"> SightLife</a>
+        <div class="collapse navbar-collapse" id="nav-content">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#home" alt="Home link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#policy" alt="Policy link">Policy</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projections" alt="Projections link">Projections</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#benefits" alt="Benefits link">Benefits</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact-us" alt="Contact Us link">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
   </div>
   <div class="container-fluid" id="content">
     <div class="row" id="policy" style="z-index:1; position:relative;">
@@ -412,17 +413,17 @@
             </div>
           </div>
           <!--<div class="col-sm-4 col-md-4 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">-->
-            <div class="card text-center card-inverse" id="indivcard" style="background-color:#645d9b;">
-              <h4 class="card-header" style="background-color:white; color:#6d6e70;">First-Person Consent</h4>
-              <div class="card-block">
-                <p>A policy of first-person consent allows any person who wishes to donate their tissues to be used for transplantation,
-                  to give legal consent prior to death.
-                </p>
-              </div>
+          <div class="card text-center card-inverse" id="indivcard" style="background-color:#645d9b;">
+            <h4 class="card-header" style="background-color:white; color:#6d6e70;">First-Person Consent</h4>
+            <div class="card-block">
+              <p>A policy of first-person consent allows any person who wishes to donate their tissues to be used for transplantation,
+                to give legal consent prior to death.
+              </p>
             </div>
-         </div>
+          </div>
         </div>
       </div>
+    </div>
     <!--</div>-->
     <div style="text-align:center;">
       <div class="row">
@@ -449,7 +450,7 @@
     </div>
     <div class="row map" style="position:relative;  height:80vh;">
       <div class="col-sm-8 offset-sm-2" id="map" style="position:static; top:0; bottom:0; width:100%; height:100%;"></div>
-      <div class="map-overlay" id="features" style= "visibility:visible; right:17%;">
+      <div class="map-overlay" id="features" style="visibility:visible; right:17%;">
         <button type="button" class="close" aria-label="Close" id="closeFeatures">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -458,16 +459,16 @@
           <div id="vis" alt="Clickable map to see how SightLife and policy implementation has increased the number of corneal transplants offered">
           </div>
         </div>
-        
+
       </div>
 
-      <div class="map-overlay" id="caseStudy" style= "visibility:hidden;">
+      <div class="map-overlay" id="caseStudy" style="visibility:hidden;">
         <button type="button" class="close" aria-label="Close" id="closeCase">
           <span aria-hidden="true">&times;</span>
         </button>
         <div id="case">
         </div>
-        
+
       </div>
       <div class="map-overlay" id="legend" style="position:absolute;"><span><img src="img/star-15.svg" class="img-fluid" style="width:10%; height:15%;"> Case Study</span><br><span>Policy in place:</span></div>
     </div>
@@ -487,10 +488,12 @@
             <h4 class="card-header" style="background-color:white; color:#6d6e70; padding-top:8%;">Better Quality Of Life</h4>
             <div class="card-block">
               <p>
-                <ul id="bullets"><li id="bullets">Improved quality of life and reduced burden of disease</li>
-               <li id="bullets">Reduced co-morbidities and mortality</li>
-               <li id="bullets">Reduced child mortality</li>
-               <li id="bullets">Reduced hospitalisations, length of stay, and other health system costs</li></ul>
+                <ul id="bullets">
+                  <li id="bullets">Improved quality of life and reduced burden of disease</li>
+                  <li id="bullets">Reduced co-morbidities and mortality</li>
+                  <li id="bullets">Reduced child mortality</li>
+                  <li id="bullets">Reduced hospitalisations, length of stay, and other health system costs</li>
+                </ul>
               </p>
             </div>
           </div>
@@ -500,9 +503,12 @@
             <h4 class="card-header" style="background-color:white; color:#6d6e70;">Economic Benefits</h4>
             <div class="card-block">
               <p>
-                <ul id="bullets"><li id="bullets">Increased employment and income to the visually impaired and caretaker</li>
-               <li id="bullets">Reduced welfare costs to the visually impaired and carer</li>
-               <li id="bullets">Achieving universal primary education by either ability for current carers to receive education or visually impaired children to access education</li></ul>
+                <ul id="bullets">
+                  <li id="bullets">Increased employment and income to the visually impaired and caretaker</li>
+                  <li id="bullets">Reduced welfare costs to the visually impaired and carer</li>
+                  <li id="bullets">Achieving universal primary education by either ability for current carers to receive education or visually
+                    impaired children to access education</li>
+                </ul>
               </p>
             </div>
           </div>
@@ -511,11 +517,14 @@
           <div class="card text-center card-inverse" id="indivcard" style="background-color:#645d9b;">
             <h4 class="card-header" style="background-color:white; color:#6d6e70;">Social Benefits</h4>
             <div class="card-block">
-              <p><ul id="bullets"><li id="bullets">Increased independence</li>
-              <li id="bullets">Increased self-esteem and improved social networks</li>
-              <li id="bullets">Reduced extreme poverty and hunger</li>
-              <li id="bullets">Increased gender equality</li>
-              <li id="bullets">Increased community participation</li></ul>
+              <p>
+                <ul id="bullets">
+                  <li id="bullets">Increased independence</li>
+                  <li id="bullets">Increased self-esteem and improved social networks</li>
+                  <li id="bullets">Reduced extreme poverty and hunger</li>
+                  <li id="bullets">Increased gender equality</li>
+                  <li id="bullets">Increased community participation</li>
+                </ul>
 
               </p>
             </div>
