@@ -13,7 +13,6 @@
   <!--CSS-->
   <link rel="stylesheet" type="text/css" href="css/style.css" />
   <link rel="icon" href="img/favicon.ico" type="image/x-icon" alt="SightLife link" />
-  <!--<link rel="stylesheet" type="text/css" href="css/projections.css" />-->
   <!--D3-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.4/d3.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.js"></script>
@@ -34,7 +33,6 @@
   <script>
     $(document).ready(function () {
       var email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
-      //var phone_regex = /^\(?([0-9]{3})\)?[- ]?([0-9]{3})[- ]?([0-9]{4})$/;
       var phone_regex = /\d{5}([- ]*)\d{5}$/;
       function validateInput(id, regex_line) {
         if (!regex_line.test($("#" + id).val())) {
@@ -67,11 +65,6 @@
     });
     $(window).bind('scroll', function (event) {
       var num = 200;
-      //if($(window).scrollTop() > num){
-      //$('.menu').addClass('fixed');
-      //} else {
-      // $('menu').removeClass('fixed');
-      // }
     });
   </script>
   <style>
@@ -120,26 +113,6 @@
   <script>
     $(document).ready(function () {
 
-      /*var windowWidth = $(window).width()
-      if (windowWidth < 568) {
-        $('#header-2').remove();
-      }*/
-
-
-
-      /*var windowWidth = $(window).width();
-      if(windowWidth < 768) {
-        $("#navbar-example").remove()
-
-        var element = document.getElementById('navbar-example'),
-          style = window.getComputedStyle(element),
-          visibility = style.getPropertyValue('visibility');
-
-        if (visibility == 'hidden') {
-          document.getElementById('features').style.visibility = 'visible';
-        }
-      }*/
-
       $('body').scrollspy({ target: '#navbar-1' })
       var toggleAffix = function (affixElement, scrollElement, wrapper) {
         var height = affixElement.outerHeight(),
@@ -168,9 +141,6 @@
         }
         a.className = 'single active nav-link:active';
       }
-      // $('.nav-item').click(function () {
-      // clickSingleA(this);
-      //});
 
       $('[data-toggle="affix"]').each(function () {
         var ele = $(this),
@@ -184,11 +154,6 @@
         toggleAffix(ele, $(window), wrapper);
 
       });
-
-      //$(document.body).scrollspy({
-      //target:'#leftCol', 
-      //o/ffset:height
-      //});
 
       mapboxgl.accessToken = 'pk.eyJ1Ijoic3RhbnRzNSIsImEiOiJjajEwNnNua3MwMzVqMzJydG5na2JreGY4In0._O6zcObpmLYzaQUe3TVu2Q';
 
@@ -258,11 +223,8 @@
 
             d3.csv('data/final.csv', function (error, data) {
 
-              //console.log(myChart);
-
               var dataByCountry = d3.nest()
                 .key(function (d) {
-                  //console.log(d)
                   return d.State;
                 })
                 .entries(data);
@@ -273,7 +235,6 @@
                 })
               }
               filterData();
-              console.log(selectedData[0].values[0].population);
               var info = d3.select('#vis').selectAll('.info')
                 .data([selectedData])
 
@@ -412,7 +373,6 @@
               </p>
             </div>
           </div>
-          <!--<div class="col-sm-4 col-md-4 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">-->
           <div class="card text-center card-inverse" id="indivcard" style="background-color:#645d9b;">
             <h4 class="card-header" style="background-color:white; color:#6d6e70;">First-Person Consent</h4>
             <div class="card-block">
@@ -424,7 +384,6 @@
         </div>
       </div>
     </div>
-    <!--</div>-->
     <div style="text-align:center;">
       <div class="row">
         <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
@@ -459,7 +418,6 @@
           <div id="vis" alt="Clickable map to see how SightLife and policy implementation has increased the number of corneal transplants offered">
           </div>
         </div>
-
       </div>
 
       <div class="map-overlay" id="caseStudy" style="visibility:hidden;">
@@ -468,7 +426,6 @@
         </button>
         <div id="case">
         </div>
-
       </div>
       <div class="map-overlay" id="legend" style="position:absolute;"><span><img src="img/star-15.svg" class="img-fluid" style="width:10%; height:15%;"> Case Study</span><br><span>Policy in place:</span></div>
     </div>
@@ -497,8 +454,6 @@
               </p>
             </div>
           </div>
-          <!--</div>-->
-          <!--<div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">-->
           <div class="card text-center card-inverse" id="indivcard" style="background-color:#645d9b;">
             <h4 class="card-header" style="background-color:white; color:#6d6e70;">Economic Benefits</h4>
             <div class="card-block">
@@ -512,8 +467,6 @@
               </p>
             </div>
           </div>
-          <!--</div>-->
-          <!--<div class="col-sm-4 col-md-4 col-lg-4 col-xl-3 ">-->
           <div class="card text-center card-inverse" id="indivcard" style="background-color:#645d9b;">
             <h4 class="card-header" style="background-color:white; color:#6d6e70;">Social Benefits</h4>
             <div class="card-block">
@@ -525,15 +478,12 @@
                   <li id="bullets">Increased gender equality</li>
                   <li id="bullets">Increased community participation</li>
                 </ul>
-
               </p>
             </div>
           </div>
-          <!-- </div>-->
         </div>
       </div>
     </div>
-
 
     <div class="row" style="margin-top: 5%; width:100vw;  background:#645d9b; " id="contact-us">
       <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
@@ -571,5 +521,4 @@
   </div>
   </div>
 </body>
-
 </html>

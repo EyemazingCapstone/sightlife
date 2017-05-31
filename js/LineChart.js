@@ -7,9 +7,6 @@ var LineChart = function() {
         bottom: 40,
         left: 50
     };
-    
-    //var selectedStates = ["Delhi"];
-    //var selectedData = [];
 
     // SVG width and height
     var width = 400;
@@ -46,27 +43,14 @@ var LineChart = function() {
 
         function setScales() {
             // Get set of all values
-            
-            //console.log(selection);
-            
-
             // Reset xScale
-            console.log(allValues);
-/*            var xExtent = d3.extent(data, function(d) {
-                console.log(d.values);
-                d.values.forEach(function(d2) {
-                    console.log(d2);
-                    return +d2.year;
-                });
-                //return +d.values.year;
-            });*/
+
             var xExtent = [];
             data.forEach(function(d) {
                 d.values.forEach(function(d2) {
                     xExtent.push(d2.year);
                 })
             })
-            console.log(data.length);
             xScale.domain([d3.min(xExtent), 14]).rangeRound([0, drawWidth]); //TODO: d3.max(xExtent) not returning 14???
 
             // Reset yScale
@@ -92,11 +76,6 @@ var LineChart = function() {
         var ele = d3.select(this);
         var svg = ele.selectAll('svg').data(data)
 
-
-
-
-        
-        console.log('here');
         var svgEnter = svg.enter()
             .append('svg')
             .attr('width', width)
@@ -108,21 +87,14 @@ var LineChart = function() {
             .domain(["No policy", "Mandatory Notification", "MN, First Person Consent"])
             .range([ "#BF6059", "#499996", "#E2A855"]);
 
-        //var svg2 = d3.selectAll("svg");
-
         svgEnter.append("g")
-            //.attr("class", "legendQuant")
             .attr("transform", "translate(" + (drawWidth - margin.right * 1.4)+ "," + (drawHeight + margin.bottom / 3) + ")")
             .append('g')
             .attr('class','legendOrdinal');
 
         var legend = d3.legendColor()
-            //.labelFormat(d3.format(".2f"))
-            //.labels(d3.legendHelpers.thresholdLabels)
-            //.labels(["No policy", "Mandatory Notification", "MN and First Person Consent"])
             .labelWrap(30)
             .shapeWidth(80)
-            //.labelAlign("start")
             .orient('horizontal')
             .scale(ordinal);
 
@@ -169,8 +141,7 @@ var LineChart = function() {
             .attr('height', drawHeight);
 
         var line = d3.line()
-            .x(function(d) {
-                console.log(d) 
+            .x(function(d) { 
                 return xScale(d.year); 
             })
             .y(function(d) { 
@@ -202,7 +173,6 @@ var LineChart = function() {
         // Make sure to set the identifying key
         var countries = ele.select('#graph').selectAll('.countries')
             .data(data, function(d){
-                console.log(d);
                 return d.key
             })
 
@@ -256,7 +226,6 @@ var LineChart = function() {
             .append('path')
             .attr("class", "countries2")
             .attr("d", function(d){
-                console.log("here")
                 return line2(d.values)
             })
             .attr("fill", "none")
@@ -446,15 +415,10 @@ var LineChart = function() {
                 return "First Person Consent and MN: " + d.combined1;
             })
 
-
-            
             labels3.exit().remove();
             
         }
     });
-    
-
-
 }
 
         
@@ -478,7 +442,6 @@ var LineChart = function() {
     }
 
     return chart;
-
 
 }
 
