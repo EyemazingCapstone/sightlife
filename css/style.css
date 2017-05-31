@@ -448,8 +448,10 @@ nav, ul, li {
   font-size: 0.6rem;
   background-color: #645D9B;
   text-align: left;
-  color: white;
   padding: 1%;
+}
+#indivcard {
+  color: white;
 }
 
 .label {

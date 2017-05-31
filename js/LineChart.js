@@ -112,7 +112,7 @@ var LineChart = function() {
 
         svgEnter.append("g")
             //.attr("class", "legendQuant")
-            .attr("transform", "translate(" + (drawWidth - margin.right * 1.5)+ "," + (drawHeight + margin.bottom / 3) + ")")
+            .attr("transform", "translate(" + (drawWidth - margin.right * 1.4)+ "," + (drawHeight + margin.bottom / 3) + ")")
             .append('g')
             .attr('class','legendOrdinal');
 
