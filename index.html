@@ -12,7 +12,7 @@
     crossorigin="anonymous">
   <!--CSS-->
   <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" alt="SightLife link"/>
   <!--<link rel="stylesheet" type="text/css" href="css/projections.css" />-->
   <!--D3-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.4/d3.min.js"></script>
@@ -248,12 +248,12 @@
             if (selectedStates.indexOf('Delhi') != -1){
               document.getElementById('caseStudy').style.visibility = 'visible';
               document.getElementById('case').innerHTML = 
-              "<h6 style='padding-top:3%; padding-left:3%;'>Case Study: Delhi</h6><img src='img/291_Sightlife_India_Margot_Duane-1326.jpg' class='img-fluid' alt='Responsive image' style='width:50%; margin-left:25%;'/><p style='font-size:0.65rem;'>SightLife used an innovative public private partnership approach that increased corneal availability in <a href='https://doc.co/e87PGY/Te9zsx'>Delhi</a> by almost 400% over four years.</p>";
+              "<h6 style='padding-top:3%; padding-left:3%;'>Case Study: Delhi</h6><img src='img/291_Sightlife_India_Margot_Duane-1326.jpg' class='img-fluid' alt='SightLife recipient in Delhi gets a successful eye transplant' style='width:50%; margin-left:25%;'/><p style='font-size:0.65rem;'>SightLife used an innovative public private partnership approach that increased corneal availability in <a href='https://doc.co/e87PGY/Te9zsx'>Delhi</a> by almost 400% over four years.</p>";
             }
             if (selectedStates.indexOf('Orissa') != -1){
               document.getElementById('caseStudy').style.visibility = 'visible';
               document.getElementById('case').innerHTML = 
-              "<h6 style='padding-top:3%; padding-left:3%;'>Case Study: Bhubaneswar</h6><img src='img/415_Sightlife_India_Margot_Duane-2385.jpg' class='img-fluid' alt='Responsive image' style='width:50%; margin-left:25%;'/><p style='font-size:0.65rem;'><a href='https://doc.co/TKyD59'>Learn more</a> about how the SightLife eye bank partnership in Bhubaneswar, Odisha increased the number of transplant offerings by 115% over a four year period.</p>";
+              "<h6 style='padding-top:3%; padding-left:3%;'>Case Study: Bhubaneswar</h6><img src='img/415_Sightlife_India_Margot_Duane-2385.jpg' class='img-fluid' alt='SightLife staff in Bhubaneswar' style='width:50%; margin-left:25%;'/><p style='font-size:0.65rem;'><a href='https://doc.co/TKyD59'>Learn more</a> about how the SightLife eye bank partnership in Bhubaneswar, Odisha increased the number of transplant offerings by 115% over a four year period.</p>";
             }
 
             d3.csv('data/final.csv', function (error, data) {
@@ -324,7 +324,7 @@
       <div class="col-sm-3 col-md-3 col-lg-3 offset-sm-1 offset-md-1 offset-lg-1" >
         <a name="home"></a>
         <a style="display:inline-block;" href="https://www.sightlife.org/">
-          <img src="./img/logo-SightLife_no-tagline.png" class="img-fluid" alt="SightLife">
+          <img src="./img/logo-SightLife_no-tagline.png" class="img-fluid" alt="SightLife Logo Icon">
         </a>
       </div>
       <div class="col-sm-7 col-md-7 col-lg-7 offset-sm-1 offset-md-1 offset-lg-1">
@@ -333,28 +333,28 @@
     </div>
     <div id="heroImg" style="position:relative;">
       <div style="z-index:2; position:absolute; left:4%; top:75%;">
-        <button type="button" class="btn btn-primary" id="button1"><a  id="button-contact" style= "color:white; width:100%;  "href="#contact-us">Contact Us</a></button>
+        <button type="button" class="btn btn-primary" id="button1"><a  id="button-contact" style= "color:white; width:100%;" href="#contact-us" alt="Button to contact us form">Contact Us</a></button>
       </div>
-      <img src="img/karthik_final.png" class="img-fluid" alt="Responsive image" style="width:100%; z-index:1;">
+      <img src="img/karthik_final.png" class="img-fluid" alt="Mother and Son who have benefited from SightLife" style="width:100%; z-index:1;">
     </div>
   </div>
   <div class="container-fluid">
     <nav data-toggle="affix" style="width:12%;" id="navbar-1" style="z-index:2; position:absolute;">
       <ul class="nav flex-column nav-pills">
         <li class="nav-item">
-          <a class="nav-link" href="#home">Home</a>
+          <a class="nav-link" href="#home" alt="Home link">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#policy">Policy</a>
+          <a class="nav-link" href="#policy" alt="Policy link">Policy</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#projections">Projections</a>
+          <a class="nav-link" href="#projections" alt="Projections link">Projections</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#benefits">Benefits</a>
+          <a class="nav-link" href="#benefits" alt="Benefits link">Benefits</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#contact-us">Contact Us</a>
+          <a class="nav-link" href="#contact-us" alt="Contact Us link">Contact Us</a>
         </li>
       </ul>
     </nav>
@@ -367,19 +367,19 @@
             <div class="collapse navbar-collapse" id="nav-content">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="#home">Home</a>
+                  <a class="nav-link" href="#home" alt="Home link">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#policy">Policy</a>
+                  <a class="nav-link" href="#policy" alt="Policy link">Policy</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#projections">Projections</a>
+                  <a class="nav-link" href="#projections" alt="Projections link">Projections</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#benefits">Benefits</a>
+                  <a class="nav-link" href="#benefits" alt="Benefits link">Benefits</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#contact-us">Contact Us</a>
+                  <a class="nav-link" href="#contact-us" alt="Contact Us link">Contact Us</a>
                 </li>
               </ul>
             </div>
@@ -395,7 +395,7 @@
           can help millions of people unlock life’s possibilities.</p><br>
         <p>A few simple policy changes would dramatically increase the number of transplant offerings available in India.</p><br>
         <div class="col-sm-10 col-md-10 col-lg-10 offset-sm-1 offset-md-1 offset-lg-1" style="height:17rem;">
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/KeQZsJ9Xig4" frameborder="0" allowfullscreen></iframe>
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/KeQZsJ9Xig4" frameborder="0" allowfullscreen alt="Video of an Introduction to SightLife and what they do"></iframe>
         </div>
         <br><br>
       </div>
@@ -435,7 +435,7 @@
       </div>
     </div>
     <div style="position:relative;" id="projections">
-      <img src="img/sajida_final.png" class="img-fluid" alt="Responsive image" style="width:100%;">
+      <img src="img/sajida_final.png" class="img-fluid" alt="Sajida and her classmates" style="width:100%;">
       <div class="imgtext">
         <h3>What is the state of India right now?</h3>
       </div>
@@ -455,7 +455,7 @@
         </button>
         <div id="pd">
           <p>Click on your state!</p>
-          <div id="vis">
+          <div id="vis" alt="Clickable map to see how SightLife and policy implementation has increased the number of corneal transplants offered">
           </div>
         </div>
         
@@ -475,7 +475,7 @@
       <br><br><br>
     </div>
     <div style="position:relative;" id="benefits">
-      <img src="img/dharender_final.png" class="img-fluid" alt="Responsive image" style="width:100%;">
+      <img src="img/dharender_final.png" class="img-fluid" alt="Dharender SightLife recipient" style="width:100%;">
       <div class="imgtext">
         <h3>How does HCRP benefit your population?</h3>
       </div>
@@ -533,7 +533,8 @@
     </div>
     <div class="row" style="margin-top:3%; margin-bottom:2%;">
       <div class="col-sm-6 col-md-6 col-lg-6 offset-sm-3 offset-md-3 offset-lg-3">
-        <form action="mailto:Josie.Noah@sightlife.org" method="POST" , enctype="text/plain">
+        <!--<form action="mailto:Josie.Noah@sightlife.org" method="POST" , enctype="text/plain">-->
+        <form action="mailto:ydingles@uw.edu" method="POST" , enctype="text/plain">
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Your Name" name="name">
@@ -554,7 +555,7 @@
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email-input" placeholder="me@some_email.com" name="Email">
           </div>
-          <button type="submit" class="btn btn-primary float-right">Send</button>
+          <button type="submit" class="btn btn-primary float-right" alt="Button to send email">Send</button>
         </form>
       </div>
     </div>
