@@ -1,40 +1,40 @@
-#SightLife Data: Turning Data Points into Human Stories
+# SightLife Data: Turning Data Points into Human Stories
 
 Updated: June 1, 2017
 
-###Code repository location:
+### Code repository location:
 
 https://github.com/dcm93/skeleton2/tree/hideNavbar
 
-###Link to live website deployment:
+### Link to live website deployment:
 
 http://students.washington.edu/stants5/SightLife/
 
-###Project Overview
+### Project Overview
 
 Successful data communication inspires action. In India, where nearly half of the world’s corneal blind population lives, policy makers must be persuaded to implement policy change to more efficiently treat these citizens. Sponsored by SightLife, SightLife Data is an information visualization tool that dynamically demonstrates the potential impact that policy change can have. SightLife will be able to use this site to create advocates and inspire policy change that will help the organization accomplish their mission of eradicating corneal blindness worldwide by the year 2040.
 
-####Contact Information:
+#### Contact Information:
 
   - Mayowa Aina - mayowa.aina26@gmail.com
   - Yvonne Ingles - ydingles@uw.edu.com
   - Domenica Carolina Mata Rodriguez - dcm93@uw.edu
   - Sarah Stanton - sarah.g.stanton@gmail.com
 
-##Contents
+## Contents
 
   - Summary of Technology Decisions (libraries used)
   - Components that can be changed
   - Updating the CSV File
   - Future functionality
 
-##Summary of Technology Decisions
+## Summary of Technology Decisions
 
 ***a summary of the major technology decisions we made, including why you chose the stack you did***
 
-###Libraries used:
+### Libraries used:
 
-#####Mapbox libraries:
+##### Mapbox libraries:
 
   - Mapbox-gl.js ||  Mapbox-gl.css
   - Version 0.37.0
@@ -42,14 +42,14 @@ Successful data communication inspires action. In India, where nearly half of th
   - A JavaScript library that renders interactive maps. Provides the styling for the maps.
   - Used to make the map and bind the data file.
 
-#####Bootstrap libraries:
+##### Bootstrap libraries:
 
   - Bootstrap.min.css  || bootstrap.min.js
   - Version 4.0.0-alpha.6
   - https://v4-alpha.getbootstrap.com/
   - A HTML, CSS and JS framework to build responsive mobile friendly web pages.
 
-#####JQuery library:
+##### JQuery library:
 
   - Jquery.min.js
   - Version 3.2.0
@@ -58,7 +58,7 @@ Successful data communication inspires action. In India, where nearly half of th
   Used to handle:
   - the communication between the navigation bar and scrolling within the page
 
-#####D3 libraries:
+##### D3 libraries:
 
 - d3.min.js
 - Version 4.0
@@ -72,14 +72,14 @@ Successful data communication inspires action. In India, where nearly half of th
 - A JavaScript library used to make chart legends.
 - Used to render the map legend defining the line chart colors and map gradients.
 
-#####Other: 
+##### Other: 
 
   - Tether.min.js
   - Version 1.3.3
   - http://tether.io/docs/
   - A positioning engine to make overlays, tooltips and dropdowns.
 
-###Components that can be changed
+### Components that can be changed
 
 The following tags are used for Search Engine Optimization and for devices that utilize accessibility tools (ie. in place of images, devices display the <alt> tag that corresponds to the image). Each of these components should be updated whenever page elements are changed.
 
@@ -101,7 +101,7 @@ Alt tags are used to describe the appearance and function of an element on a pag
 
 Learn more here: https://moz.com/learn/seo/alt-text
 
-###Updating the CSV file
+### Updating the CSV file
 
 Notes on final.csv:
 
@@ -134,7 +134,7 @@ To change the data that is displayed in the line chart the csv file containing t
 
 The line chart will be updated with the new data once the file is saved, and file is updated on the server. Adding additional columns or changing the column names will require code modification. 
 
-###Future functionality
+### Future functionality
 
 Make the html reusable, depending on what country is selected a different CSV is being fed into the d3 read csv function. This would allow for the html to be repopulated depending on what country is selected.
  
