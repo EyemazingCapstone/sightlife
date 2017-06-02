@@ -4,7 +4,7 @@ Updated: June 2, 2017
 
 ### Code repository location:
 
-https://github.com/dcm93/skeleton2/tree/hideNavbar
+https://github.com/dcm93/skeleton2/tree/master
 
 ### Link to live website deployment:
 
