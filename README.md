@@ -101,6 +101,10 @@ Alt tags are used to describe the appearance and function of an element on a pag
 
 Learn more here: https://moz.com/learn/seo/alt-text
 
+`<form action="mailto:Josie.Noah@sightlife.org" method="POST" , enctype="text/plain">`
+
+This section of code is at the end of index.html and mailto: can be changed to any email.
+
 ### Updating the CSV file
 
 Notes on final.csv:
