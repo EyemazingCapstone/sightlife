@@ -165,8 +165,11 @@
         container: 'map',
         style: 'mapbox://styles/stants5/cj2ln1or9002q2sozyk9rdbsd',
         center: [78.9629, 20.5937],
-        zoom: 3
-      });
+        zoom: 3,
+        attributionControl: false
+      }).addControl(new mapboxgl.AttributionControl({
+        compact: true
+      }));
 
       map.on('load', function () {
         map.getCanvas().style.cursor = 'default';
@@ -360,7 +363,7 @@
           can help millions of people unlock life’s possibilities.</p><br>
         <p>A few simple policy changes would dramatically increase the number of transplant offerings available in India.</p><br>
         <div class="col-sm-10 col-md-10 col-lg-10 offset-sm-1 offset-md-1 offset-lg-1" style="height:17rem;">
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/KeQZsJ9Xig4" frameborder="0" allowfullscreen alt="Video of an Introduction to SightLife and what they do"></iframe>
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/KeQZsJ9Xig4" frameborder="0" allowfullscreen alt="Video Introduction to SightLife and what they do"></iframe>
         </div>
         <br><br>
       </div>

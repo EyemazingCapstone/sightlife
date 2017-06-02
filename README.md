@@ -1,6 +1,6 @@
 # SightLife Data: Turning Data Points into Human Stories
 
-Updated: June 1, 2017
+Updated: June 2, 2017
 
 ### Code repository location:
 
@@ -30,7 +30,15 @@ Successful data communication inspires action. In India, where nearly half of th
 
 ## Summary of Technology Decisions
 
-***a summary of the major technology decisions we made, including why you chose the stack you did***
+We built a website that contains information about recommended policy change and data visualizations that show how policy change would increase corneal transplant offerings. The website was built using HTML5, CSS, JavaScript, and MapBox.
+
+Some additional libraries were used in order to obtain a certain functionality and appearance. The functionality of the different libraries used is described below. 
+
+MapBox was used to create the map of India because it allows for map customization. We overlayed on top of the map popups that display information based on the state that is selected. If a case study is selected, the case study pop up also shows. These pop ups contain a link to Docs.com where the in depth case study is hosted. More information on case studies below.
+
+At the end of the website, we’ve included a form. This form is initially setup to email Josie Noah. See ‘Components that can be changed’ for more information to change this email.
+
+Finally, the website is mobile responsive. This was done using Bootstrap functionality as well as media queries in the style.css file. 
 
 ### Libraries used:
 
@@ -39,8 +47,8 @@ Successful data communication inspires action. In India, where nearly half of th
   - Mapbox-gl.js ||  Mapbox-gl.css
   - Version 0.37.0
   - https://www.mapbox.com/mapbox-gl-js/api/
-  - A JavaScript library that renders interactive maps. Provides the styling for the maps.
-  - Used to make the map and bind the data file.
+  - A JavaScript library that renders interactive maps. Provides the styling for the maps. Used to make the map and bind the data file. To create custom map, India shape data was uploaded to MapBox to create a tile set. This tile set was then used to create a custom style and adding different layers for the shading and case studies.
+
 
 ##### Bootstrap libraries:
 
@@ -54,23 +62,19 @@ Successful data communication inspires action. In India, where nearly half of th
   - Jquery.min.js
   - Version 3.2.0
   - http://jquery.com/
-  - A JavaScript library for HTML document traversal and manipulation, event handling, animation, and Ajax.
-  Used to handle:
-  - the communication between the navigation bar and scrolling within the page
+  - A JavaScript library for HTML document traversal and manipulation, event handling, animation, and Ajax. Used to handle the communication between the navigation bar and scrolling within the page.
 
 ##### D3 libraries:
 
 - d3.min.js
 - Version 4.0
 - https://github.com/d3/d3/wiki
-- A JavaScript library for  visualizing data.
-- Used to make the line chart that displays state specific policy implementation data within the map area.
+- A JavaScript library for  visualizing data. Used to make the line chart that displays state specific policy implementation data within the map area.
  
 - d3-legend.js
 - Version 4.0
 - http://d3-legend.susielu.com/
-- A JavaScript library used to make chart legends.
-- Used to render the map legend defining the line chart colors and map gradients.
+- A JavaScript library used to make chart legends. Used to render the map legend defining the line chart colors and map gradients.
 
 ##### Other: 
 
@@ -78,6 +82,11 @@ Successful data communication inspires action. In India, where nearly half of th
   - Version 1.3.3
   - http://tether.io/docs/
   - A positioning engine to make overlays, tooltips and dropdowns.
+  
+### Additional Tools:
+
+We developed an informational YouTube video to be embedded in the website.
+Case studies on the map are linked to Docs.com, and were developed using Sway.
 
 ### Components that can be changed
 

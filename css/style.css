@@ -482,3 +482,10 @@ form {
   border: #499996;
   box-shadow: #499996;
 }
+
+.mapboxgl-ctrl-bottom-left {
+  left: 20vw;
+}
+.mapboxgl-ctrl-bottom-right {
+  right: 20vw;
+}
