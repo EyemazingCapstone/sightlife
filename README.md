@@ -126,18 +126,24 @@ Notes on final.csv:
 
 Notes on baseline rates data file:
 
-1. Notification Rate (Mandatory Notification) is set to 25% in the HCRP & MN Potential Donors tab
-2. Numbers in the policy implementation tab are used for baseline column in final.csv
+1. Medical Suitabillity (MN) in HCRP & MN Potential Donors tab is 0
+2. Notification Rate (Mandatory Notification) in HCRP & MN Potential Donors tab is also 0
+3. HCRP Consent Rate in HCRP & MN Tx tab is 0.2
+4. Numbers in the policy implementation tab are used for baseline column in final.csv
 
 Notes on MN rates data file:
 
-1. Notification Rate (Mandatory Notification) is set to 40% in the HCRP & MN Potential Donors tab
-2. Numbers in the policy implementation tab are used for MN column in final.csv
+1. Medical Suitabillity (MN) in HCRP & MN Potential Donors tab is 0.08
+2. Notification Rate (Mandatory Notification) in HCRP & MN Potential Donors tab is also 0.4
+3. HCRP Consent Rate in HCRP & MN Tx tab is 0.5
+4. Numbers in the policy implementation tab are used for MN column in final.csv
 
 Notes on combined rates data file:
 
-1. Notification Rate (Mandatory Notification) is set to 65% in the HCRP & MN Potential Donors tab
-2. Numbers in the policy implementation tab are used for combined column in final.csv
+1. Medical Suitabillity (MN) in HCRP & MN Potential Donors is 0.08
+2. Notification Rate (Mandatory Notification) in HCRP & MN Potential Donors is also 0.4
+3. HCRP Consent Rate in HCRP & MN Tx is 0.75
+4. Numbers in the policy implementation tab are used for combined column in final.csv
 
 To change the data that is displayed in the line chart the csv file containing the state names and numbers can be modified:
 
@@ -145,7 +151,7 @@ To change the data that is displayed in the line chart the csv file containing t
 2. Locate the Year, State, and the Category to be changed
 3. Save the CSV file.
 
-The line chart will be updated with the new data once the file is saved, and file is updated on the server. Adding additional columns or changing the column names will require code modification. 
+The line chart will be updated with the new data once the file is saved, and file is updated on the server. **Adding additional columns or changing the column names will require code modification.**
 
 ### Future functionality
 
